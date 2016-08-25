@@ -145,9 +145,6 @@ body, p, button {
     width: 93%;
     margin: 0 auto;
     text-align: center;
-    /*border-bottom: solid 1px #989898;*/
-    /*border-radius: 3px;*/
-
 }
 
 .explanationZone .title {
@@ -163,12 +160,6 @@ body, p, button {
     margin-bottom: 21px;
 }
 
-/*.explanationZone .splitLine {*/
-/*width: 100%;*/
-/*height: 1px;*/
-/*background-color: #F2F2F2;*/
-/*}*/
-
 [contenteditable=true]:empty:before {
     content: attr(placeholder);
     display: block; /* For Firefox */
@@ -179,9 +170,7 @@ body, p, button {
     width: 93%;
     font-size: 17px;
     color: #666666;
-    /*padding: 13px 0;*/
     outline: none;
-    /*margin-bottom: -81px;*/
 }
 
 .mainBodyEditZone div {
@@ -196,7 +185,30 @@ body, p, button {
     font-size: 16px;
     color: #666666;
 }
-
+/*序列号样式控制*/
+.mainBodyEditZone ul,.mainBodyEditZone ol,.mainBodyEditZone li{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+.mainBodyEditZone ul li.textlist{
+    list-style-type: disc;
+    list-style-position:inside;
+}
+.mainBodyEditZone ol li.textnumList{
+    list-style-type: lower-roman;
+    list-style-position:inside;
+}
+.mainBodyEditZone ul li.textnumList:before{
+    content:"1 ";
+}
+/*采用内容生成的方式实现列表序号*/
+/*.mainBodyEditZone .textnumList:before{
+    content:"1";
+}
+.mainBodyEditZone .textlist:before{
+    content:".";
+}*/
 .mainBodyEditZone .textBig {
     padding-top: 13px;
     padding-bottom: 0;
@@ -204,13 +216,33 @@ body, p, button {
     color: #3e3e3e;
     font-weight: bolder;
 }
-
+.mainBodyEditZone .textBig.textindent{
+    text-indent: 48px;
+    font-weight: bolder;
+}
 .mainBodyEditZone .textLit {
     padding-top: 13px;
     padding-bottom: 0;
     font-size: 24px;
     color: #999999;
     font-weight: normal;
+}
+.mainBodyEditZone .textLit.textindent{
+    text-indent: 48px;
+    font-weight: normal;
+}
+.mainBodyEditZone .textindent{
+    text-indent: 32px;
+    font-weight: normal;
+}
+.mainBodyEditZone .textcenter{
+    text-align:center;
+}
+.mainBodyEditZone .textright{
+    text-align:right;
+}
+.mainBodyEditZone .textleft{
+    text-align:left;
 }
 
 .activePart {
@@ -235,15 +267,6 @@ body, p, button {
     margin-bottom: 100px !important;
 }
 
-/*@keyframes addPartShow {*/
-/*0% {*/
-/*!*margin-bottom: 0;*!*/
-/*}*/
-/*100% {*/
-/*margin-bottom: 100px;*/
-/*}*/
-/*}*/
-
 .focustest {
     border: none;
     width: 1%;
@@ -251,14 +274,6 @@ body, p, button {
     height: 1px;
     padding: 0;
 }
-
-/*.toolBox {*/
-/*position: absolute;*/
-/*width: 93%;*/
-/*left: 3.5%;*/
-/*height: 55px;*/
-/*background-color: white;*/
-/*}*/
 
 .toolBox {
     margin: 0 auto;
@@ -316,7 +331,6 @@ body, p, button {
     height: 22px;
     width: 22px;
     margin: 6px 5px;
-    /*border-radius: 3px;*/
     background-size: cover;
 }
 

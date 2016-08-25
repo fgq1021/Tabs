@@ -164,16 +164,12 @@ var mainBodyEditZone = function (id) {
     $('#' + id).click(function () {
         activePart = event.srcElement;
         verifyTool(activePart, id);
-        // $('html,body').animate({scrollTop: $(activePart).offset().top - (110) + "px"}, 300);
-        // $('html,body').animate({scrollTop: $(activePart).offset().top - (110) + "px"}, 300);
     });
     var i = 0;
-
     function iii() {
         i++;
         return i;
     }
-
     $(window).scroll(function () {
         console.log($(document).scrollTop(), $('.toolBoxInline').get(0).offsetTop);
         if ($('#' + id).get(0).offsetTop <= $(document).scrollTop() + 13) {
@@ -187,8 +183,6 @@ var mainBodyEditZone = function (id) {
             $('#' + id).removeAttr("style");
         }
     });
-
-
     $('#' + id).keydown(function () {
         console.log($(this).children().eq(0).get(0).tagName);
         if ($(this).children().eq(0).html() == "<br>" && $(this).children().eq(0).get(0).tagName != "DIV") {
@@ -196,7 +190,7 @@ var mainBodyEditZone = function (id) {
                 event.keyCode = 0;
                 event.returnValue = false;
             }
-            console.log(11111111111111111);
+            console.log("第一段已经删除");
         }
         else if ($(this).children().eq(0).html() == "<br>" && $(this).children().eq(0).get(0).tagName == "DIV") {
             if ((event.keyCode == 8)) {
@@ -219,28 +213,10 @@ var mainBodyEditZone = function (id) {
         console.log(event.keyCode + "keypress");
         $("<p>").html("keypress" + iii()).prependTo("#logBox");
     });
-    // document.onselectionchange = function () {
-    //     if ((activePart != window.getSelection().anchorNode.parentNode && window.getSelection().anchorNode.parentNode != $('#' + id).get(0)) || activePart.clientHeight != activePartHeight) {
-    //         activePart = window.getSelection().anchorNode.parentNode;
-    //         verifyTool(activePart, id);
-    //     }
-    //     if (window.getSelection().anchorNode.parentNode == $('#' + id).get(0)) {
-    //         $("#" + id).find('.activePart').removeClass("activePart");
-    //         $(activePart).addClass("activePart");
-    //     }
-    //     activePartHeight = activePart.clientHeight;
-    // };
 };
 
 var verifyTool = function (thisPart, editZoneId) {
-    // if (thisPart.id == editZoneId) {
-    //     $("#" + editZoneId).find('.activePart').removeClass("activePart").removeClass("addPartActive");
-    //     $(thisPart).addClass("activePart");
-    //     var thisPartTop = thisPart.offsetTop;
-    //     creTextTool("textTools-toor", $("#" + editZoneId).parent().attr('class'), thisPartTop - 55);
-    // }
-    // else
-    if (thisPart.parentElement.id == editZoneId) {
+    if (thisPart.parentElement.id == editZoneId||thisPart.parentElement.parentElement.id == editZoneId) {
         if (thisPart.id == "") {
             $("#" + editZoneId).parent().find('.activePart').removeClass("activePart").removeClass("addPartActive");
             $(thisPart).addClass("activePart");
@@ -252,17 +228,9 @@ var verifyTool = function (thisPart, editZoneId) {
     }
 };
 
-
-// var creToolBox = function (id, editZoneId, top) {
-//     $("#" + editZoneId).parent().find(".toolBox").remove();
-//     $("<div class='toolBox'>").attr("id", id).css("top", top * 1 + "px").appendTo("." + $("#" + editZoneId).parent().attr('class'));
-//     $("<div class='splitLine'>").appendTo("#" + id);
-//     $("<div class='toolBar'>").appendTo("#" + id);
-// };
 var creToolBox = function (id, editZoneId, top) {
     $("#" + editZoneId).parent().find(".toolBar").attr("id", id).children().remove();
 };
-
 var creAddBtn = function (id, editZoneId, top) {
     $("#" + editZoneId).parent().find(".addBtnLine").remove();
     $("<div class='addBtnLine'>").attr("id", id).css("top", top * 1 + "px").appendTo("." + $("#" + editZoneId).parent().attr('class'));
@@ -273,7 +241,6 @@ var creAddBtn = function (id, editZoneId, top) {
     fillBtnBox("addBar");
     $('.btnZone').click(function () {
         console.log(111);
-
         var addBtnA = $(this).parent().find(".addBtn");
         if (addBtnA.attr("class").match("addBtnClose") == "addBtnClose") {
             $(addBtnA).removeClass("addBtnClose").addClass("addBtnRe");
@@ -314,13 +281,20 @@ var creTextTool = function (id, editZoneId, top) {
     fillToolBar("../../userPage/css/toolBarImg/text-sizeBig.png", "normal", "", "textBig", textSize);
     fillToolBar("../../userPage/css/toolBarImg/text-sizeLit.png", "normal", "", "textLit", textSize);
     fillToolBar("../../userPage/css/toolBarImg/text-size.png", "normal", "", "text", textSize);
-    fillToolBar("../../userPage/css/toolBarImg/text-left.png", "normal", "", "textleft");
-    fillToolBar("../../userPage/css/toolBarImg/text-center.png", "normal", "居中", "textcenter");
-    fillToolBar("../../userPage/css/toolBarImg/text-right.png", "normal", "", "textright");
-    fillToolBar("../../userPage/css/toolBarImg/text-noList.png", "normal", "", "textnoList");
-    fillToolBar("../../userPage/css/toolBarImg/text-list.png", "normal", "", "textlist");
-    fillToolBar("../../userPage/css/toolBarImg/text-numList.png", "normal", "", "textnumList");
-
+    fillToolBar("../../userPage/css/toolBarImg/text-left.png", "normal", "", "textleft",textPosition);
+    fillToolBar("../../userPage/css/toolBarImg/text-center.png", "normal", "", "textcenter",textPosition);
+    fillToolBar("../../userPage/css/toolBarImg/text-right.png", "normal", "", "textright",textPosition);
+    fillToolBar("../../userPage/css/toolBarImg/text-noList.png", "normal", "", "textnoList",textList);
+    fillToolBar("../../userPage/css/toolBarImg/text-list.png", "normal", "", "textlist",textList);
+    fillToolBar("../../userPage/css/toolBarImg/text-numList.png", "normal", "", "textnumList",textList);
+    fillToolBar("../../userPage/css/toolBarImg/text-noindent.png", "normal", "", "textnoindent",textIndent);
+    fillToolBar("../../userPage/css/toolBarImg/text-indent.png", "normal", "", "textindent",textIndent);
+    if (partAttribute.match("textindent") == "textindent") {
+        $("#" + editZoneId).parent().find('.toolBar').find('#textindent').show();
+    }
+    else {
+        $("#" + editZoneId).parent().find('.toolBar').find('#textnoindent').show();
+    }
     if (partAttribute.match("textBig") == "textBig") {
         $("#" + editZoneId).parent().find('.toolBar').find('#textBig').show();
     }
@@ -330,13 +304,31 @@ var creTextTool = function (id, editZoneId, top) {
     else {
         $("#" + editZoneId).parent().find('.toolBar').find('#text').show();
     }
+    if (partAttribute.match("textnumList") == "textnumList") {
+        $("#" + editZoneId).parent().find('.toolBar').find('#textnumList').show();
+    }
+    else if (partAttribute.match("textlist") == "textlist") {
+        $("#" + editZoneId).parent().find('.toolBar').find('#textlist').show();
+    }
+    else {
+        $("#" + editZoneId).parent().find('.toolBar').find('#textnoList').show();
+    }
+    if (partAttribute.match("textright") == "textright") {
+        $("#" + editZoneId).parent().find('.toolBar').find('#textright').show();
+    }
+    else if (partAttribute.match("textcenter") == "textcenter") {
+        $("#" + editZoneId).parent().find('.toolBar').find('#textcenter').show();
+    }
+    else {
+        $("#" + editZoneId).parent().find('.toolBar').find('#textleft').show();
+    }
     $("<div class='splitLine'>").appendTo("#" + id);
 };
-
 // width =normal/wide
 var fillToolBar = function (img, width, name, toolId, toolFunction) {
     $("<button class='tool'>").attr("id", toolId).unbind("click").click(function () {
         toolFunction(this);
+        //console.log(this);
         var activePart = $(this).parent().parent().parent().find('.activePart').get(0);
         verifyTool(activePart, $(this).parent().parent().parent().find('.mainBodyEditZone').attr("id"));
     }).appendTo(".toolBar");
@@ -368,6 +360,55 @@ var textSize = function (whichBtn) {
         editZone.find("#text").show();
     }
 };
-
-
-// $(document).ready(pageStart);
+var textList = function (whichBtn) {
+    var editZone = $(whichBtn).parent().parent().parent();//编辑区域
+    var targetPart = $(whichBtn).parent().parent().parent().find(".activePart");//编辑区选中的部分
+    if (whichBtn.id == "textnoList") {
+        targetPart.addClass("textlist");
+        editZone.find("#textnoList").hide();
+        editZone.find("#textlist").show();
+    }
+    else if (whichBtn.id == "textlist") {
+        targetPart.addClass("textnumList").removeClass("textlist");
+        editZone.find("#textlist").hide();
+        editZone.find("#textnumList").show();
+    }
+    else if (whichBtn.id == "textnumList") {
+        targetPart.removeClass("textnumList");
+        editZone.find("#textnumList").hide();
+        editZone.find("#textnoList").show();
+    }
+};
+var textPosition = function (whichBtn) {
+    var editZone = $(whichBtn).parent().parent().parent();//编辑区域
+    var targetPart = $(whichBtn).parent().parent().parent().find(".activePart");//编辑区选中的部分
+    if (whichBtn.id == "textleft") {
+        targetPart.addClass("textright");
+        editZone.find("#textleft").hide();
+        editZone.find("#textright").show();
+    }
+    else if (whichBtn.id == "textright") {
+        targetPart.addClass("textcenter").removeClass("textright");
+        editZone.find("#textright").hide();
+        editZone.find("#textcenter").show();
+    }
+    else if (whichBtn.id == "textcenter") {
+        targetPart.removeClass("textcenter");
+        editZone.find("#textcenter").hide();
+        editZone.find("#textleft").show();
+    }
+};
+var textIndent = function (whichBtn) {
+    var editZone = $(whichBtn).parent().parent().parent();//编辑区域
+    var targetPart = $(whichBtn).parent().parent().parent().find(".activePart");//编辑区选中的部分
+    if (whichBtn.id == "textnoindent") {
+        targetPart.addClass("textindent");
+        editZone.find("#textnoindent").hide();
+        editZone.find("#textindent").show();
+    }
+    else if (whichBtn.id == "textindent") {
+        targetPart.removeClass("textindent");
+        editZone.find("#textindnet").hide();
+        editZone.find("#textnoindent").show();
+    }
+};
