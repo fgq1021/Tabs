@@ -52,7 +52,6 @@ var mainBodyEditZone = function (id) {
     $('#' + id).keyup(function () {
         console.log(event.keyCode + "keyup");
         $("<p>").html("keyup" + iii()).prependTo("#logBox");
-
     });
     $('#' + id).keypress(function () {
         console.log(event.keyCode + "keypress");
