@@ -1,0 +1,75 @@
+
+.artlist .li {
+    height: 112px;
+    list-style-type: none;
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.artlist .li .pic {
+    background-size: cover;
+    width: 120px;
+    height: 90px;
+    border-radius: 1px;
+    left: 11px;
+    top: 11px;
+    background-color: #0d3349;
+    border-radius: 3px;
+    position: absolute;
+}
+
+.artlist .li .newpic {
+    background-size: cover;
+    width: 120px;
+    height: 90px;
+    border-radius: 1px;
+    left: 11px;
+    top: 11px;
+    position: absolute;
+    background-color: #ffffff;
+}
+
+.artlist .li .textbox {
+    left: 142px;
+    right: 11px;
+    top: 11px;
+    position: absolute;
+    height: 90px;
+}
+
+.artlist .li .textbox .tittle {
+    font-size: 17px;
+    color: #666666;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.artlist .li .textbox .inputTittle {
+    font-size: 17px;
+    color: #666666;
+    line-height: 1.2;
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0);
+    border: hidden;
+    width: 100%;
+    resize: none;
+}
+
+.artlist .li .textbox .note {
+    font-size: 12px;
+    color: #999999;
+    text-align: left;
+    line-height: 12px;
+    margin-top: 13px;
+}
+
+.artlist .li .bottomline {
+    position: absolute;
+    left: 11px;
+    right: 11px;
+    height: 1px;
+    top: 111px;
+    background-color: #d5d5d5
+}

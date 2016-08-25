@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HeaPot-科技原本更轻松</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="css/index.css" id="heaui">
+    <link rel="stylesheet" href="css/tools/login.css" id="login">
+</head>
+<body>
+<div class="messageBar">
+    <p>哈哈啊哈</p>
+</div>
+<!--登陆页面-->
+<div id="heapot" class="login">
+    <p style="color: #007aff ;font-size: 55px;font-family: hea">HEAPOT</P>
+    <p style="color: #666666 ;font-size: 13px;letter-spacing: 17px;left: 14px;position: absolute;right: 0px">科技原本更轻松</p>
+    <form style="width: 196px;margin-left: auto;margin-right: auto;top: 140px;position: relative">
+        <div id="form-login-username" class="form-group">
+            <input id="username" class="form-control" type="text" required="">
+            <span class="form-highlight"></span>
+            <span class="form-bar"></span>
+            <label for="username" class="float-label">账户</label>
+        </div>
+        <div id="form-login-password" class="form-group">
+            <input id="passwd" class="form-control" type="password" required="">
+            <span class="form-highlight"></span>
+            <span class="form-bar"></span>
+            <label for="password" class="float-label">密码</label>
+        </div>
+        <div class="btn btn-block btn-info ripple-effect" type="submit" style="width: 169px;font-size: 15px">登陆
+        </div>
+    </form>
+</div>
+<!--主页基本框架-->
+<div class="mainpage" style="display: none">
+    <div style="position: absolute;width: 100%;min-height: 30px;top: 50px;display: none" class="edit column">
+        <p style="text-align: center;color: #ffffff;font-size: 18px;text-shadow:0px 0px 3px #000">点击编辑此栏目</p>
+    </div>
+    <img src="" class="headimg" id="editCatalog">
+    <div class="navibar">
+        <ul class="naviul">
+            <button class="naviulBtn" type="button"></button>
+        </ul>
+    </div>
+    <div class="artlist">
+    </div>
+</div>
+<script src="js/tools/jquery-3.0.0.js"></script>
+<script src="js/tools/quantize.js"></script>
+<script src="js/tools/ColorAnalysis.js"></script>
+<script src="js/index.js"></script>
+<script>
+    // Ripple-effect animation
+    (function ($) {
+        $(".ripple-effect").click(function (e) {
+            var rippler = $(this);
+
+            // create .ink element if it doesn't exist
+            if (rippler.find(".ink").length == 0) {
+                rippler.append("<span class='ink'></span>");
+            }
+
+            var ink = rippler.find(".ink");
+
+            // prevent quick double clicks
+            ink.removeClass("animate");
+
+            // set .ink diametr
+            if (!ink.height() && !ink.width()) {
+                var d = Math.max(rippler.outerWidth(), rippler.outerHeight());
+                ink.css({height: d, width: d});
+            }
+
+            // get click coordinates
+            var x = e.pageX - rippler.offset().left - ink.width() / 2;
+            var y = e.pageY - rippler.offset().top - ink.height() / 2;
+
+            // set .ink position and add class .animate
+            ink.css({
+                top: y + 'px',
+                left: x + 'px'
+            }).addClass("animate");
+        })
+    })(jQuery);
+</script>
+<!--<script>-->
+    <!--$(document).ready(function(){-->
+        <!--alert($(window).height()); //浏览器当前窗口可视区域高度-->
+        <!--alert($(document).height()); //浏览器当前窗口文档的高度-->
+        <!--alert($(document.body).height());//浏览器当前窗口文档body的高度-->
+        <!--alert($(document.body).outerHeight(true));//浏览器当前窗口文档body的总高度 包括border padding margin-->
+        <!--alert($(window).width()); //浏览器当前窗口可视区域宽度-->
+        <!--alert($(document).width());//浏览器当前窗口文档对象宽度-->
+        <!--alert($(document.body).width());//浏览器当前窗口文档body的宽度-->
+        <!--alert($(document.body).outerWidth(true));//浏览器当前窗口文档body的总宽度 包括border padding margin-->
+    <!--})-->
+<!--</script>-->
+</body>
+</html>

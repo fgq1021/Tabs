@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新建活动</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="/activity/css/tools/bootstrap.min.css" id="datetimePicker">
+    <link rel="stylesheet" href="/activity/css/tools/bootstrap-datetimepicker.min.css" id="datetimePicker">
+    <link rel="stylesheet" href="/activity/css/editer.css" id="heaui">
+    <link rel="stylesheet" href="/css/HeaBasicUI.css" id="heaui">
+
+
+</head>
+<body>
+<table class="messageBar">
+    <tbody>
+    <tr>
+        <td class="messageBarBackground">
+            <div class="messageBarText">
+                <p>科技原本更轻松</p>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div class="setpad">
+    <!--顶部模式切换-->
+    <div class="mainsetbox-sel">
+        <p class="mainset-tittle" style="line-height: 34px">设置报名表单</p>
+    </div>
+    <!--文字输入-->
+    <input class="inputbox-main name" placeholder="请输入活动名">
+    <!--输入描述-->
+    <input class="inputbox-main description" placeholder="请简单描述您的活动">
+    <!--添加图片-->
+    <form class="cover-img" style="background-image: url()" id="imgUpload" name="imgUpload"
+          action="/fileupload" method="post" enctype="multipart/form-data">
+        <label for="InputFile" class="upLoadBox">点击此处上传封面图</label>
+        <input type="file" style="display: none !important;visibility: hidden;width: 100%;height: 88px" id="InputFile"
+               name="file">
+        <div class="progressBar"></div>
+        <p class="progressMessage">100%</p>
+    </form>
+    <div id="imgUploadedUrl" style="display: none;"></div>
+
+    <!--自定义表单模块-->
+    <div class="formbox">
+        <p style="text-align: center ;color: #666666;top: 30px;position: relative">点击下方按钮新建表单项</p>
+    </div>
+
+
+    <!--一行四按钮-->
+    <div class="setbox" style="background-color: rgba(229,229,229,0)">
+        <div class="button-box-4" id="btn1">
+            <button type="button">+输入项</button>
+        </div>
+        <div class="button-box-4" style="left: 25.5%;top: -34px;" id="btn2">
+            <button type="button">+单选</button>
+        </div>
+        <div class="button-box-4" style="left: 51%;top: -68px;" id="btn3">
+            <button type="button">+多选</button>
+        </div>
+        <div class="button-box-4" style="left: 76.5%;top: -102px;" id="btn4">
+            <button type="button">+描述行</button>
+        </div>
+    </div>
+
+    <!--日期输入栏-->
+    <div class="setbox datetime">
+        <button type="button" class="close-box"></button>
+        <input readonly class="inputdate startTime" type="datetime" id="startTime">
+        <label for="startTime" class="inputbox-name">开始日期</label>
+    </div>
+    <!--日期输入栏-->
+    <div class="setbox datetime">
+        <button type="button" class="close-box"></button>
+        <input readonly class="inputdate endTime" type="datetime" id="endTime">
+        <label for="endTime" class="inputbox-name">结束日期</label>
+    </div>
+    <!--数字输入栏-->
+    <div class="setbox">
+        <input class="inputNum maxParticipators" type="number" id="maxParticipators">
+        <label for="maxParticipators" class="inputbox-name">总人数</label>
+    </div>
+
+    <!--一行三按钮-->
+    <div class="setbox" style="background-color: rgba(229,229,229,0)">
+        <div class="button-box-3" style="background-color: #007aff" id="btn21">
+            <button type="button">保存</button>
+        </div>
+        <div class="button-box-3" style="left: 33.8%;top: -34px;" id="btn22">
+            <button type="button">另存</button>
+        </div>
+        <div class="button-box-3" style="left: 67.6%;top: -68px;" id="btn23">
+            <button type="button">清空</button>
+        </div>
+    </div>
+
+    <div class="databox">
+        <!--数据显示模块-->
+        <div class="button-box-1" style="background-color: #007aff">
+            <button type="button">下载报名核销数据</button>
+        </div>
+
+        <!--已参加人数显示-->
+        <div class="setbox">
+            <p class="inputbox-name">核销/报名情况</p>
+            <p class="outputbox">20/50</p>
+        </div>
+
+
+        <!--活动链接地址显示-->
+        <div class="eventUrl">
+            <a target="_blank">
+                <div class="setbox" style="margin: 0px">
+                    <p class="inputbox-name">活动链接</p>
+                    <div class="right-box"></div>
+                </div>
+            </a>
+            <div class="setbox" style="margin: 0px;background-color: #eeeeee;height: 102px">
+                <p class="inputbox-name">
+                    http://sijiache.heapot.com/webui/activity_one.php?id=a8ee3189-7082-4b46-a7ed-5a6ea0315afd</p>
+            </div>
+        </div>
+
+        <!--新建核销员按钮-->
+        <button class="button-box-1" id="btncrtchk" type="button">
+            <p class="inputbox-name" style="color: #ffffff ;text-align: center">+新建核销员</p>
+        </button>
+
+        <div class="chkbox">
+        </div>
+
+
+    </div>
+
+</div>
+<script src="/js/setting.js"></script>
+<script src="/js/HeaBasicUI.js"></script>
+<script src="/activity/js/tools/jquery-3.0.0.js"></script>
+<script src="/activity/js/tools/form-master/jquery.form.js"></script>
+<script src="/activity/js/activity.js"></script>
+<script src="/activity/js/tools/bootstrap-datetimepicker.min.js"></script>
+<script src="/activity/js/tools/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="/activity/js/tools/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(".inputdate").datetimepicker({
+        format: 'yyyy-mm-dd hh:ii:00'
+    });
+</script>
+
+</body>
+</html>

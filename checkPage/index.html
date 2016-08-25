@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HeaPot</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <style type="text/css">
+        body, p, button {
+            border: 0;
+            margin: 0;
+            padding: 0;
+            font-family: Helvetica Neue, Helvetica, Arial, Microsoft YaHei, sans-serif;
+            text-rendering: optimizeLegibility
+        }
+
+        body {
+            background-color: #373b3e;
+        }
+
+        .btnBox {
+            width: 252px;
+            margin: 0 auto;
+            bottom: 20px;
+            height: 100%;
+            margin-top: 20px;
+        }
+
+        .aaa {
+            position: absolute;
+            width: 252px;
+            height: 325px;
+            bottom: 21px;
+        }
+
+        .textBox {
+            margin-top: 20px;
+            width: 100%;
+            height: 81px;
+            text-align: center;
+        }
+
+        .textBox p {
+            color: white;
+            font-size: 24px;
+        }
+
+        .dot {
+            padding: 5px;
+            border-radius: 5px;
+            background-color: white;
+            color: white;
+            font-size: 0;
+            line-height: 1px;
+        }
+
+        .numBtn {
+            width: 65px;
+            height: 65px;
+            border-radius: 50px;
+            background-color: rgba(0, 0, 0, 0);
+            border: solid 1px white;
+            color: white;
+            font-size: 24px;
+            font-weight: lighter;
+            margin: 8px;
+            outline: none;
+        }
+
+        .numBtn:active {
+            background-color: white;
+            color: #373b3e;
+            width: 55px;
+            height: 55px;
+            margin: 13px;
+        }
+
+
+        /*更多样式在这里定义*/
+    </style>
+</head>
+<body>
+<div class="textBox">
+    <p>请输入核销码</p>
+    <span class="dot">1</span>
+    <span class="dot">1</span>
+    <span class="dot">1</span>
+    <span class="dot">1</span>
+</div>
+<div class="btnBox">
+    <div class="aaa">
+        <button class="numBtn" onclick="btnClick(this)">1</button>
+        <button class="numBtn">2</button>
+        <button class="numBtn">3</button>
+        <button class="numBtn">4</button>
+        <button class="numBtn">5</button>
+        <button class="numBtn">6</button>
+        <button class="numBtn">7</button>
+        <button class="numBtn">8</button>
+        <button class="numBtn">9</button>
+        <button class="numBtn" style="border: none"> </button>
+        <button class="numBtn">0</button>
+        <button class="numBtn" style="border: none"> </button>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    //    js代码写在这里
+    function btnClick(who) {
+        var a = document.createElement("span");
+        a.innerHTML = who.html;
+        document.body.appendChild(a);
+    }
+</script>
+</body>
+</html>
