@@ -11,10 +11,12 @@ var mainBodyEditZone = function (id) {
         verifyTool(activePart, id);
     });
     var i = 0;
+
     function iii() {
         i++;
         return i;
     }
+
     $(window).scroll(function () {
         console.log($(document).scrollTop(), $('.toolBoxInline').get(0).offsetTop);
         if ($('#' + id).get(0).offsetTop <= $(document).scrollTop() + 13) {
@@ -59,7 +61,7 @@ var mainBodyEditZone = function (id) {
     });
 };
 var verifyTool = function (thisPart, editZoneId) {
-    if (thisPart.parentElement.id == editZoneId||thisPart.parentElement.parentElement.id == editZoneId) {
+    if (thisPart.parentElement.id == editZoneId || thisPart.parentElement.parentElement.id == editZoneId) {
         if (thisPart.id == "") {
             $("#" + editZoneId).parent().find('.activePart').removeClass("activePart").removeClass("addPartActive");
             $(thisPart).addClass("activePart");
@@ -80,14 +82,14 @@ var creTextTool = function (id, editZoneId, top) {
     fillToolBar("../../userPage/css/toolBarImg/text-sizeBig.png", "normal", "", "textBig", textSize);
     fillToolBar("../../userPage/css/toolBarImg/text-sizeLit.png", "normal", "", "textLit", textSize);
     fillToolBar("../../userPage/css/toolBarImg/text-size.png", "normal", "", "text", textSize);
-    fillToolBar("../../userPage/css/toolBarImg/text-left.png", "normal", "", "textleft",textPosition);
-    fillToolBar("../../userPage/css/toolBarImg/text-center.png", "normal", "", "textcenter",textPosition);
-    fillToolBar("../../userPage/css/toolBarImg/text-right.png", "normal", "", "textright",textPosition);
-    fillToolBar("../../userPage/css/toolBarImg/text-noList.png", "normal", "", "textnoList",textList);
-    fillToolBar("../../userPage/css/toolBarImg/text-list.png", "normal", "", "textlist",textList);
-    fillToolBar("../../userPage/css/toolBarImg/text-numList.png", "normal", "", "textnumList",textList);
-    fillToolBar("../../userPage/css/toolBarImg/text-noindent.png", "normal", "", "textnoindent",textIndent);
-    fillToolBar("../../userPage/css/toolBarImg/text-indent.png", "normal", "", "textindent",textIndent);
+    fillToolBar("../../userPage/css/toolBarImg/text-left.png", "normal", "", "textleft", textPosition);
+    fillToolBar("../../userPage/css/toolBarImg/text-center.png", "normal", "", "textcenter", textPosition);
+    fillToolBar("../../userPage/css/toolBarImg/text-right.png", "normal", "", "textright", textPosition);
+    fillToolBar("../../userPage/css/toolBarImg/text-noList.png", "normal", "", "textnoList", textList);
+    fillToolBar("../../userPage/css/toolBarImg/text-list.png", "normal", "", "textlist", textList);
+    fillToolBar("../../userPage/css/toolBarImg/text-numList.png", "normal", "", "textnumList", textList);
+    fillToolBar("../../userPage/css/toolBarImg/text-noindent.png", "normal", "", "textnoindent", textIndent);
+    fillToolBar("../../userPage/css/toolBarImg/text-indent.png", "normal", "", "textindent", textIndent);
     if (partAttribute.match("textindent") == "textindent") {
         $("#" + editZoneId).parent().find('.toolBar').find('#textindent').show();
     }
@@ -169,6 +171,7 @@ var textSize = function (whichBtn) {
     var targetPart = $(whichBtn).parent().parent().parent().find(".activePart");
     if (whichBtn.id == "text") {
         targetPart.addClass("textBig");
+        changeNodeName(targetPart, "h1", "activePart");
         editZone.find("#text").hide();
         editZone.find("#textBig").show();
     }
@@ -237,8 +240,6 @@ var textIndent = function (whichBtn) {
 };
 
 
-
-
 var fillBtnBox = function (addClass) {
     creBtnBox("图片", addClass);
     creBtnBox("报名表单", addClass);
@@ -254,4 +255,11 @@ var creBtnBox = function (name, addClass) {
     $("<p>+</p>").appendTo("#a");
     $("<p></p>").html(name).appendTo("#a");
     $("#a").removeAttr("id");
+};
+
+var changeNodeName = function (currentNode, targetNodeName, className) {
+    var nodeContent = currentNode.html();
+    console.log("此节点的内容为：" + nodeContent);
+    currentNode.replaceWith("<" + targetNodeName + " class=" + className + ">" + nodeContent + "</" + targetNodeName + ">");
+
 };
