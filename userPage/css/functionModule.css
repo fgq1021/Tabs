@@ -191,16 +191,16 @@ body, p, button {
     padding:0;
     margin:0;
 }
-.mainBodyEditZone ul li.textlist{
+/*,.mainBodyEditZone ul li .textlist和.mainBodyEditZone ol li .textnumList没有意义，p没有list-style-type*/
+.mainBodyEditZone>ul>li/*,.mainBodyEditZone ul li.textlist*/{
     list-style-type: circle;
     list-style-position:inside;
 }
-.mainBodyEditZone ol li.textnumList{
-    list-style-type: lower-roman;
+.mainBodyEditZone>ol>li/*,.mainBodyEditZone ol li.textnumList*/{
+    list-style-type: decimal;
     list-style-position:inside;
 }
-
-.mainBodyEditZone{
+/*.mainBodyEditZone{
     counter-reset:c1;
 }
 .mainBodyEditZone ul li.textnumList{
@@ -208,7 +208,7 @@ body, p, button {
 }
 .mainBodyEditZone ul li.textnumList:before{
     content:counter(c1)" ";
-}
+}*/
 /*采用内容生成的方式实现列表序号*/
 /*.mainBodyEditZone .textnumList:before{
     content:"1";
