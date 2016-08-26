@@ -171,7 +171,7 @@ var textSize = function (whichBtn) {
     var targetPart = $(whichBtn).parent().parent().parent().find(".activePart");
     if (whichBtn.id == "text") {
         targetPart.addClass("textBig");
-        changeTagName(targetPart, "h1", "activePart");
+        changeTagName(targetPart, "h1");
         editZone.find("#text").hide();
         editZone.find("#textBig").show();
     }
@@ -257,11 +257,11 @@ var creBtnBox = function (name, addClass) {
     $("#a").removeAttr("id");
 };
 
-var changeTagName = function (currentNode, targetNodeName, className) {
+var changeTagName = function (currentNode, targetNodeName) {
     var nodeContent = currentNode.html();
     var nodeClass = currentNode.get(0).className;
     var nodeId = currentNode.attr("id");
     // console.log(currentNode);
     // console.log("此节点：" + nodeContent + " " + nodeClass + " " + nodeId);
-     currentNode.replaceWith("<" + targetNodeName + " class='" + className + "'id='" + nodeId + "'>" + nodeContent + "</" + targetNodeName + ">");
+     currentNode.replaceWith("<" + targetNodeName + " class='" + nodeClass + "'id='" + nodeId + "'>" + nodeContent + "</" + targetNodeName + ">");
 };
