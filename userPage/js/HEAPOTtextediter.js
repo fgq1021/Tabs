@@ -41,8 +41,7 @@ var mainBodyEditZone = function (id) {
             if ((event.keyCode == 8)) {
                 event.keyCode = 0;
                 event.returnValue = false;
-                var elementName=$(this).children()[0].nodeName;
-                $(this).children().eq(0).replaceWith("<"+elementName+"><br></"+elementName+">");
+                $(this).children().eq(0).replaceWith("<p><br></p>");
                 $('.focustest').focus();
                 $(this).focus();
             }
@@ -60,7 +59,7 @@ var mainBodyEditZone = function (id) {
     });
 };
 var verifyTool = function (thisPart, editZoneId) {
-    if (thisPart.parentElement.id == editZoneId||thisPart.parentElement.parentElement.id == editZoneId||thisPart.parentElement.parentElement.parentElement.id == editZoneId) {
+    if (thisPart.parentElement.id == editZoneId||thisPart.parentElement.parentElement.id == editZoneId) {
         if (thisPart.id == "") {
             $("#" + editZoneId).parent().find('.activePart').removeClass("activePart").removeClass("addPartActive");
             $(thisPart).addClass("activePart");
@@ -78,25 +77,23 @@ var creTextTool = function (id, editZoneId, top) {
     creToolBox(id, editZoneId, top);
     var partAttribute = $("#" + editZoneId).find(".activePart").attr('class');
     //console.log(partAttribute);
-    fillToolBar("../../userPage/css/toolBarImg/text-sizeBig.png", "normal", "", "textBig", textSize);
-    fillToolBar("../../userPage/css/toolBarImg/text-sizeLit.png", "normal", "", "textLit", textSize);
+    fillToolBar("../../userPage/css/toolBarImg/text-sizeBig.png", "normal", "大号", "textBig", textSize);
+    fillToolBar("../../userPage/css/toolBarImg/text-sizeLit.png", "normal", "小号", "textLit", textSize);
     fillToolBar("../../userPage/css/toolBarImg/text-size.png", "normal", "", "text", textSize);
     fillToolBar("../../userPage/css/toolBarImg/text-left.png", "normal", "", "textleft",textPosition);
-    fillToolBar("../../userPage/css/toolBarImg/text-center.png", "normal", "", "textcenter",textPosition);
-    fillToolBar("../../userPage/css/toolBarImg/text-right.png", "normal", "", "textright",textPosition);
+    fillToolBar("../../userPage/css/toolBarImg/text-center.png", "normal", "居中", "textcenter",textPosition);
+    fillToolBar("../../userPage/css/toolBarImg/text-right.png", "normal", "居右", "textright",textPosition);
     fillToolBar("../../userPage/css/toolBarImg/text-noList.png", "normal", "", "textnoList",textList);
-    fillToolBar("../../userPage/css/toolBarImg/text-list.png", "normal", "", "textlist",textList);
-    fillToolBar("../../userPage/css/toolBarImg/text-numList.png", "normal", "", "textnumList",textList);
+    fillToolBar("../../userPage/css/toolBarImg/text-list.png", "normal", "无序", "textlist",textList);
+    fillToolBar("../../userPage/css/toolBarImg/text-numList.png", "normal", "有序", "textnumList",textList);
     fillToolBar("../../userPage/css/toolBarImg/text-noindent.png", "normal", "", "textnoindent",textIndent);
-    fillToolBar("../../userPage/css/toolBarImg/text-indent.png", "normal", "", "textindent",textIndent);
-    //首行缩进
+    fillToolBar("../../userPage/css/toolBarImg/text-indent.png", "normal", "缩进", "textindent",textIndent);
     if (partAttribute.match("textindent") == "textindent") {
         $("#" + editZoneId).parent().find('.toolBar').find('#textindent').show();
     }
     else {
         $("#" + editZoneId).parent().find('.toolBar').find('#textnoindent').show();
     }
-    //文字大小改变模块
     if (partAttribute.match("textBig") == "textBig") {
         $("#" + editZoneId).parent().find('.toolBar').find('#textBig').show();
     }
@@ -106,7 +103,6 @@ var creTextTool = function (id, editZoneId, top) {
     else {
         $("#" + editZoneId).parent().find('.toolBar').find('#text').show();
     }
-    //列表序列该改变模块
     if (partAttribute.match("textnumList") == "textnumList") {
         $("#" + editZoneId).parent().find('.toolBar').find('#textnumList').show();
         changeTagName($("#" + editZoneId).find(".activePart"),"ol");
@@ -117,14 +113,12 @@ var creTextTool = function (id, editZoneId, top) {
     }
     else {
         $("#" + editZoneId).parent().find('.toolBar').find('#textnoList').show();
-        if($("#" + editZoneId).find(".activePart").parent()[0].nodeName=="LI"){
+        if($("#" + editZoneId).find(".activePart")[0].nodeName!=="P"){
             var act_content=$("#" + editZoneId).find(".activePart").html();
             var ol_class=$("#" + editZoneId).find(".activePart")[0].className;
-            var eventName=$("#" + editZoneId).find(".activePart")[0].nodeName;
-            $("#" + editZoneId).find(".activePart").parent().parent().replaceWith("<"+eventName+" class='"+ol_class+"'>"+act_content+"</"+eventName+">");
+            $("#" + editZoneId).find(".activePart").parent().replaceWith("<p class='"+ol_class+"'>"+act_content+"</p>");
         }
     }
-    //文本对齐方式
     if (partAttribute.match("textright") == "textright") {
         $("#" + editZoneId).parent().find('.toolBar').find('#textright').show();
     }
@@ -139,16 +133,11 @@ var creTextTool = function (id, editZoneId, top) {
 var changeTagName = function (currentNode, targetNodeName) {
     var nodeContent = currentNode.html();
     var nodeClass = currentNode.get(0).className;
-    var eventName = currentNode[0].nodeName;
-    if(currentNode.parent()[0].nodeName=="DIV"){
-        currentNode.replaceWith("<" + targetNodeName + "><li><"+eventName+" class='" + nodeClass + "'>" + nodeContent + "</"+eventName+"></li></" + targetNodeName + ">");
-        $("#editZone1").find(".activePart").parent().addClass(nodeClass).removeClass('activePart');
-        console.log($("#editZone1").find(".activePart").parent().parent()[0]);
+    if(currentNode[0].nodeName=="P"){
+        currentNode.replaceWith("<" + targetNodeName + "><li class='" + nodeClass + "'>" + nodeContent + "</li></" + targetNodeName + ">");
     }
-    else if(currentNode.parent()[0].nodeName=="LI") {
-        currentNode.parent().parent().replaceWith("<" + targetNodeName + "><li><"+eventName+" class='" + nodeClass + "'>" + nodeContent + "</"+eventName+"></li></" + targetNodeName + ">");
-        $("#editZone1").find(".activePart").parent().addClass(nodeClass).removeClass('activePart');
-        console.log($("#editZone1").find(".activePart").parent().parent()[0]);
+    else{
+            currentNode.parent().replaceWith("<" + targetNodeName + "><li class='" + nodeClass + "'>" + nodeContent + "</li></" + targetNodeName + ">");
     }
 };
 var creAddBtn = function (id, editZoneId, top) {

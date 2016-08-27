@@ -345,18 +345,18 @@ body, p, button {
     width: 34px;
 }
 
-.toolBar .tool .toolName {
-    float: left;
-    line-height: 55px;
-    font-size: 17px;
-    color: #989898;
+.toolBar .tool .toolName{
+    /*line-height: 55px;*/
+    font-size: 14px;
+    color: #03a9f4;
+    position: absolute;
+    top: -20px;
 }
 
 .addBtnLine {
     position: absolute;
     width: 100%;
     height: 1px;
-    /*background-color: #F2F2F2;*/
 }
 
 .addBtnLine .line {
