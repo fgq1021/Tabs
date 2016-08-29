@@ -160,15 +160,9 @@ var changeTagName = function (currentNode, targetNodeName) {
         //console.log(nodeContent);
         currentNode.parent().replaceWith("<" + targetNodeName + ">" + nodeContent + "</" + targetNodeName + ">");
         //console.log($("#editZone1").parent().find('.focustest')[0]);
-        /*$("#editZone1").find(".activePart").blur(function(){
-            console.log('先失去焦点');
-            $("#editZone1").parent().find('.focustest').focus(function(){
-                console.log('获取焦点');
-            });
-        });*/
         $("#editZone1").parent().find('.focustest').focus();
         //$("#editZone1").find(".activePart").focus();不起作用，获取不到
-        //focus函数括号里面不写函数
+        //focus函数括号里面不写函数，表示获取焦点；括号里面写函数表示当获取焦点后执行焦点里面的内容
     }
 };
 var creAddBtn = function (id, editZoneId, top) {
