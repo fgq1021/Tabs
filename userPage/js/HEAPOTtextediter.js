@@ -11,17 +11,27 @@ var mainBodyEditZone = function (id) {
         //console.log(e.target);
         verifyTool(activePart, id);
     });
-    /*document.onselectionchange = function () {
+    document.onselectionchange = function () {
+        console.log(window.getSelection().anchorNode,typeof  window.getSelection().anchorNode);
+        if(window.getSelection().anchorNode!=null){
+            console.log(window.getSelection().anchorNode.nodeName);
+            if(window.getSelection().anchorNode.nodeName=='#text'){
+                activePart = window.getSelection().anchorNode.parentNode;
+                verifyTool(activePart, id);
+            }
+        }
+        /*activePart = window.getSelection().anchorNode.parentNode;
+        verifyTool(activePart, id);
         if ((activePart != window.getSelection().anchorNode.parentNode && window.getSelection().anchorNode.parentNode != $('#' + id).get(0)) || activePart.clientHeight != activePartHeight) {
-            activePart = window.getSelection().anchorNode.parentNode;
-            verifyTool(activePart, id);
+             activePart = window.getSelection().anchorNode.parentNode;
+             verifyTool(activePart, id);
         }
         if (window.getSelection().anchorNode.parentNode == $('#' + id).get(0)) {
             $("#" + id).find('.activePart').removeClass("activePart");
             $(activePart).addClass("activePart");
-        }
-        activePartHeight = activePart.clientHeight;
-    };*/
+         }
+         activePartHeight = activePart.clientHeight;*/
+    };
     var i = 0;
     function iii() {
         i++;
@@ -117,38 +127,12 @@ var creTextTool = function (id, editZoneId, top) {
     }
     if (partAttribute.match("textnumList") == "textnumList") {
         $("#" + editZoneId).parent().find('.toolBar').find('#textnumList').show();
-        changeTagName($("#" + editZoneId).find(".activePart"),"ol");
-        //获取当前选中项的父元素的内容，替换原来的父元素的内容
     }
     else if (partAttribute.match("textlist") == "textlist") {
         $("#" + editZoneId).parent().find('.toolBar').find('#textlist').show();
-        changeTagName($("#" + editZoneId).find(".activePart"),"ul");
     }
     else {
         $("#" + editZoneId).parent().find('.toolBar').find('#textnoList').show();
-        if($("#" + editZoneId).find(".activePart")[0].nodeName!=="P"){
-            var act_content=$("#" + editZoneId).find(".activePart").parent()[0].innerText;
-            //console.log(act_content);
-            var length=$("#" + editZoneId).find("ol>li").length;
-            console.log(length);
-            var ol_class=$("#" + editZoneId).find(".activePart")[0].className;
-            for(var i=0,li_content=[],li_class=[];i<length;i++){
-                li_content[i]=$("#" + editZoneId).find("ol>li")[i].innerText;
-                //console.log(li_content[i]);
-                li_class[i]=$("#" + editZoneId).find("ol>li")[i].className;
-                //console.log(li_class[i]);
-                //$("#" + editZoneId).find("ol>li")[i].replaceWith("<p class='"+li_class+"'>"+li_content+"</p>");
-            }
-            //console.log(li_content,li_content.length);
-            $("#" + editZoneId).find(".activePart").parent().empty();
-            for(var i=0,str='';i<li_content.length;i++){
-                //console.log(li_content[i]);
-                str+="<p class='"+li_class[i]+"'>"+li_content[i]+"</p>";
-            }
-            //console.log(str);
-            $("#" + editZoneId).find("ol").replaceWith(str);
-            //$("#" + editZoneId).find(".activePart").parent().replaceWith("<p class='"+ol_class+"'>"+act_content+"</p>");
-        }
     }
     if (partAttribute.match("textright") == "textright") {
         $("#" + editZoneId).parent().find('.toolBar').find('#textright').show();
@@ -164,21 +148,27 @@ var creTextTool = function (id, editZoneId, top) {
 var changeTagName = function (currentNode, targetNodeName) {
     var nodeClass = currentNode.get(0).className;
     if(currentNode[0].nodeName=="P"){
-        //console.log($("#editZone1").find(".activePart").parent()[0]);
         //如果当前节点的兄弟元素节点名字是p的话则执行
         if(!currentNode.siblings().nodeName){
             var nodeContent = currentNode.html();
             currentNode.replaceWith("<" + targetNodeName + "><li class='" + nodeClass + "'>" + nodeContent + "</li></" + targetNodeName + ">");
-            //console.log(currentNode.siblings()[0]);
-            //console.log('只有一行');
-            console.log($("#editZone1").find(".activePart").parent()[0]);
         }
     }
-    //如果当前选中的兄弟元素节点名字是li的话则
+    //如果当前选中的元素节点名字是li的话则
     else{
         var nodeContent = currentNode.parent().html();
-        console.log(nodeContent);
+        //console.log(nodeContent);
         currentNode.parent().replaceWith("<" + targetNodeName + ">" + nodeContent + "</" + targetNodeName + ">");
+        //console.log($("#editZone1").parent().find('.focustest')[0]);
+        /*$("#editZone1").find(".activePart").blur(function(){
+            console.log('先失去焦点');
+            $("#editZone1").parent().find('.focustest').focus(function(){
+                console.log('获取焦点');
+            });
+        });*/
+        $("#editZone1").parent().find('.focustest').focus();
+        //$("#editZone1").find(".activePart").focus();不起作用，获取不到
+        //focus函数括号里面不写函数
     }
 };
 var creAddBtn = function (id, editZoneId, top) {
@@ -247,16 +237,40 @@ var textList = function (whichBtn) {
         targetPart.addClass("textlist");
         editZone.find("#textnoList").hide();
         editZone.find("#textlist").show();
+        changeTagName($("#editZone1").find(".activePart"),"ul");
     }
     else if (whichBtn.id == "textlist") {
         targetPart.addClass("textnumList").removeClass("textlist");
         editZone.find("#textlist").hide();
         editZone.find("#textnumList").show();
+        changeTagName($("#editZone1").find(".activePart"),"ol");
     }
     else if (whichBtn.id == "textnumList") {
         targetPart.removeClass("textnumList");
         editZone.find("#textnumList").hide();
         editZone.find("#textnoList").show();
+        if($("#editZone1").find(".activePart")[0].nodeName!=="P"){
+            var act_content=$("#editZone1").find(".activePart").parent()[0].innerText;
+            //console.log(act_content);
+            var length=$("#editZone1").find("ol>li").length;
+            //console.log(length);
+            var ol_class=$("#editZone1").find(".activePart")[0].className;
+            for(var i=0,li_content=[],li_class=[];i<length;i++){
+                li_content[i]=$("#editZone1").find("ol>li")[i].innerText;
+                //console.log(li_content[i]);
+                li_class[i]=$("#editZone1").find("ol>li")[i].className;
+                //console.log(li_class[i]);
+                //$($("#" + editZoneId).find("ol>li")[i]).replaceWith("<p class='"+li_class+"'>"+li_content+"</p>");
+            }
+            //console.log(li_content,li_content.length);
+            $("#editZone1").find(".activePart").parent().empty();
+            for(var i=0,str='';i<li_content.length;i++){
+                str+="<p class='"+li_class[i]+"'>"+li_content[i]+"</p>";
+            }
+            //console.log(str);
+            $("#editZone1").find("ol").replaceWith(str);
+            //$("#" + editZoneId).find(".activePart").parent().replaceWith("<p class='"+ol_class+"'>"+act_content+"</p>");
+        }
     }
 };
 var textPosition = function (whichBtn) {

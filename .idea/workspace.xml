@@ -23,8 +23,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/editer/activity/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="810">
-              <caret line="53" column="21" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
+            <state relative-caret-position="783">
+              <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -33,17 +33,16 @@
       <file leaf-file-name="HEAPOTtextediter.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/userPage/js/HEAPOTtextediter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="141" column="56" selection-start-line="141" selection-start-column="56" selection-end-line="141" selection-end-column="56" />
+            <state relative-caret-position="393">
+              <caret line="170" column="25" selection-start-line="170" selection-start-column="25" selection-end-line="170" selection-end-column="25" />
               <folding>
-                <element signature="e#9061#10313#0" expanded="false" />
-                <element signature="e#10383#11139#0" expanded="false" />
-                <element signature="e#11176#11844#0" expanded="false" />
-                <element signature="e#11881#12608#0" expanded="false" />
-                <element signature="e#12649#13370#0" expanded="false" />
-                <element signature="e#13409#13938#0" expanded="false" />
-                <element signature="e#13977#14230#0" expanded="false" />
-                <element signature="e#14274#14436#0" expanded="false" />
+                <element signature="e#5668#5757#0" expanded="false" />
+                <element signature="e#8284#9536#0" expanded="false" />
+                <element signature="e#9606#10362#0" expanded="false" />
+                <element signature="e#10399#11067#0" expanded="false" />
+                <element signature="e#14048#14577#0" expanded="false" />
+                <element signature="e#14616#14869#0" expanded="false" />
+                <element signature="e#14913#15075#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -105,10 +104,10 @@
         <option value="$PROJECT_DIR$/editer/activity/js/activity.js" />
         <option value="$PROJECT_DIR$/userPage/js/tool/HEAPOTtextediter.js" />
         <option value="$PROJECT_DIR$/userPage/js/functionModule.js" />
-        <option value="$PROJECT_DIR$/editer/activity/index.html" />
         <option value="$USER_HOME$/Desktop/functionModule.js" />
-        <option value="$PROJECT_DIR$/userPage/js/HEAPOTtextediter.js" />
+        <option value="$PROJECT_DIR$/editer/activity/index.html" />
         <option value="$PROJECT_DIR$/userPage/css/functionModule.css" />
+        <option value="$PROJECT_DIR$/userPage/js/HEAPOTtextediter.js" />
       </list>
     </option>
   </component>
@@ -150,7 +149,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -275,31 +273,32 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../beifen/day 08 29" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\xampp\htdocs\tabs\tabs\userPage\js" />
-      <recent name="D:\Byron\OneDrive\webproject\tabs\editer\activity" />
-      <recent name="D:\Byron\onedrive\webproject\tabs\editer" />
-      <recent name="D:\Byron\onedrive\webproject\tabs\js\tools" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Byron\OneDrive\webproject\tabs\webapp\js\tools" />
       <recent name="D:\Byron\OneDrive\webproject\tabs\editer\js\tools" />
       <recent name="D:\Byron\OneDrive\webproject\tabs\userPage\css\tabBasicImg" />
       <recent name="D:\Byron\OneDrive\webproject\tabs\editer\activity" />
       <recent name="D:\Byron\OneDrive\webproject\tabs\editer\activity\js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\xampp\htdocs\tabs\tabs\userPage\js" />
+      <recent name="D:\Byron\OneDrive\webproject\tabs\editer\activity" />
+      <recent name="D:\Byron\onedrive\webproject\tabs\editer" />
+      <recent name="D:\Byron\onedrive\webproject\tabs\js\tools" />
     </key>
   </component>
   <component name="RunManager">
@@ -427,23 +426,24 @@
       <workItem from="1472206557833" duration="4000" />
       <workItem from="1472261397924" duration="6205000" />
       <workItem from="1472271690162" duration="15504000" />
-      <workItem from="1472434395389" duration="13109000" />
+      <workItem from="1472434395389" duration="28694000" />
+      <workItem from="1472465227650" duration="1326000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="240099000" />
+    <option name="totallyTimeSpent" value="257010000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22991072" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1845238" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973656" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24925596" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -482,7 +482,7 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="8" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -769,13 +769,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/userPage/js/functionModule.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="141" column="5" selection-start-line="141" selection-start-column="5" selection-end-line="141" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/functionModule.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-594">
@@ -783,19 +776,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/editer/activity/js/activity.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="33" column="31" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/userPage/js/textEditerModules.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -809,33 +793,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/userPage/css/functionModule.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="480" column="32" selection-start-line="480" selection-start-column="32" selection-end-line="480" selection-end-column="32" />
+        <state relative-caret-position="357">
+          <caret line="289" column="0" selection-start-line="289" selection-start-column="0" selection-end-line="289" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/editer/activity/js/activity.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="33" column="31" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/userPage/js/functionModule.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="141" column="5" selection-start-line="141" selection-start-column="5" selection-end-line="141" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/editer/activity/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="53" column="21" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
+        <state relative-caret-position="783">
+          <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/userPage/js/HEAPOTtextediter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="141" column="56" selection-start-line="141" selection-start-column="56" selection-end-line="141" selection-end-column="56" />
+        <state relative-caret-position="393">
+          <caret line="170" column="25" selection-start-line="170" selection-start-column="25" selection-end-line="170" selection-end-column="25" />
           <folding>
-            <element signature="e#9061#10313#0" expanded="false" />
-            <element signature="e#10383#11139#0" expanded="false" />
-            <element signature="e#11176#11844#0" expanded="false" />
-            <element signature="e#11881#12608#0" expanded="false" />
-            <element signature="e#12649#13370#0" expanded="false" />
-            <element signature="e#13409#13938#0" expanded="false" />
-            <element signature="e#13977#14230#0" expanded="false" />
-            <element signature="e#14274#14436#0" expanded="false" />
+            <element signature="e#5668#5757#0" expanded="false" />
+            <element signature="e#8284#9536#0" expanded="false" />
+            <element signature="e#9606#10362#0" expanded="false" />
+            <element signature="e#10399#11067#0" expanded="false" />
+            <element signature="e#14048#14577#0" expanded="false" />
+            <element signature="e#14616#14869#0" expanded="false" />
+            <element signature="e#14913#15075#0" expanded="false" />
           </folding>
         </state>
       </provider>
