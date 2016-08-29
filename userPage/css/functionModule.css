@@ -477,7 +477,6 @@ body, p, button {
         transform: rotate(90deg);
     }
 }
-
 .addBtnLine .addBtnRe {
     animation: turnRight45 0.2s;
     transform: rotate(45deg);
