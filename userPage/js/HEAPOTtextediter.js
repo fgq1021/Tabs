@@ -12,33 +12,38 @@ var mainBodyEditZone = function (id) {
         verifyTool(activePart, id);
     });
     document.onselectionchange = function () {
-        console.log(window.getSelection().anchorNode,typeof  window.getSelection().anchorNode);
-        if(window.getSelection().anchorNode!=null){
-            console.log(window.getSelection().anchorNode.nodeName);
-            if(window.getSelection().anchorNode.nodeName=='#text'){
+        // console.log(window.getSelection().anchorNode,typeof  window.getSelection().anchorNode);
+        if (window.getSelection().anchorNode != null) {
+            if (activePart != window.getSelection().anchorNode.parentNode && window.getSelection().anchorNode.nodeName == "#text") {
                 activePart = window.getSelection().anchorNode.parentNode;
                 verifyTool(activePart, id);
+                $("#" + id).find('.activePart').removeClass("activePart");
+                $(activePart).addClass("activePart");
             }
-            if (window.getSelection().anchorNode.parentNode == $('#' + id).get(0)) {
+            else if (activePart != window.getSelection().anchorNode && window.getSelection().anchorNode.nodeName != "#text") {
+                activePart = window.getSelection().anchorNode;
+                verifyTool(activePart, id);
                 $("#" + id).find('.activePart').removeClass("activePart");
                 $(activePart).addClass("activePart");
             }
         }
         /*if ((activePart != window.getSelection().anchorNode.parentNode && window.getSelection().anchorNode.parentNode != $('#' + id).get(0)) || activePart.clientHeight != activePartHeight) {
-             activePart = window.getSelection().anchorNode.parentNode;
-             verifyTool(activePart, id);
-        }
-        if (window.getSelection().anchorNode.parentNode == $('#' + id).get(0)) {
-            $("#" + id).find('.activePart').removeClass("activePart");
-            $(activePart).addClass("activePart");
+         activePart = window.getSelection().anchorNode.parentNode;
+         verifyTool(activePart, id);
+         }
+         if (window.getSelection().anchorNode.parentNode == $('#' + id).get(0)) {
+         $("#" + id).find('.activePart').removeClass("activePart");
+         $(activePart).addClass("activePart");
          }
          activePartHeight = activePart.clientHeight;*/
     };
     var i = 0;
+
     function iii() {
         i++;
         return i;
     }
+
     $(window).scroll(function () {
         console.log($(document).scrollTop(), $('.toolBoxInline').get(0).offsetTop);
         if ($('#' + id).get(0).offsetTop <= $(document).scrollTop() + 13) {
@@ -83,7 +88,7 @@ var mainBodyEditZone = function (id) {
     });
 };
 var verifyTool = function (thisPart, editZoneId) {
-    if (thisPart.parentElement.id == editZoneId||thisPart.parentElement.parentElement.id == editZoneId) {
+    if (thisPart.parentElement.id == editZoneId || thisPart.parentElement.parentElement.id == editZoneId) {
         if (thisPart.id == "") {
             $("#" + editZoneId).parent().find('.activePart').removeClass("activePart").removeClass("addPartActive");
             $(thisPart).addClass("activePart");
@@ -104,18 +109,15 @@ var creTextTool = function (id, editZoneId, top) {
     fillToolBar("../../userPage/css/toolBarImg/text-sizeBig.png", "normal", "大号", "textBig", textSize);
     fillToolBar("../../userPage/css/toolBarImg/text-sizeLit.png", "normal", "小号", "textLit", textSize);
     fillToolBar("../../userPage/css/toolBarImg/text-size.png", "normal", "", "text", textSize);
-    fillToolBar("../../userPage/css/toolBarImg/text-left.png", "normal", "", "textleft",textPosition);
-    fillToolBar("../../userPage/css/toolBarImg/text-center.png", "normal", "居中", "textcenter",textPosition);
-    fillToolBar("../../userPage/css/toolBarImg/text-right.png", "normal", "居右", "textright",textPosition);
-    fillToolBar("../../userPage/css/toolBarImg/text-noList.png", "normal", "", "textnoList",textList);
-    fillToolBar("../../userPage/css/toolBarImg/text-list.png", "normal", "无序", "textlist",textList);
-    fillToolBar("../../userPage/css/toolBarImg/text-numList.png", "normal", "有序", "textnumList",textList);
-    fillToolBar("../../userPage/css/toolBarImg/text-noindent.png", "normal", "", "textnoindent",textIndent);
-    fillToolBar("../../userPage/css/toolBarImg/text-indent.png", "normal", "缩进", "textindent",textIndent);
-<<<<<<< HEAD
-=======
+    fillToolBar("../../userPage/css/toolBarImg/text-left.png", "normal", "", "textleft", textPosition);
+    fillToolBar("../../userPage/css/toolBarImg/text-center.png", "normal", "居中", "textcenter", textPosition);
+    fillToolBar("../../userPage/css/toolBarImg/text-right.png", "normal", "居右", "textright", textPosition);
+    fillToolBar("../../userPage/css/toolBarImg/text-noList.png", "normal", "", "textnoList", textList);
+    fillToolBar("../../userPage/css/toolBarImg/text-list.png", "normal", "无序", "textlist", textList);
+    fillToolBar("../../userPage/css/toolBarImg/text-numList.png", "normal", "有序", "textnumList", textList);
+    fillToolBar("../../userPage/css/toolBarImg/text-noindent.png", "normal", "", "textnoindent", textIndent);
+    fillToolBar("../../userPage/css/toolBarImg/text-indent.png", "normal", "缩进", "textindent", textIndent);
 
->>>>>>> 321a95ae4d57f5b4763416a67a9199b3fa4fd1a3
     if (partAttribute.match("textindent") == "textindent") {
         $("#" + editZoneId).parent().find('.toolBar').find('#textindent').show();
     }
@@ -150,20 +152,20 @@ var creTextTool = function (id, editZoneId, top) {
         $("#" + editZoneId).parent().find('.toolBar').find('#textleft').show();
     }
     $("<div class='splitLine'>").appendTo("#" + id);
-    var message=$('#editZone1').html();
-    window.localStorage.setItem('editZone1',message);
+    var message = $('#editZone1').html();
+    window.localStorage.setItem('editZone1', message);
 };
 var changeTagName = function (currentNode, targetNodeName) {
     var nodeClass = currentNode.get(0).className;
-    if(currentNode[0].nodeName=="P"){
+    if (currentNode[0].nodeName == "P") {
         //如果当前节点的兄弟元素节点名字是p的话则执行
-        if(!currentNode.siblings().nodeName){
+        if (!currentNode.siblings().nodeName) {
             var nodeContent = currentNode.html();
             currentNode.replaceWith("<" + targetNodeName + "><li class='" + nodeClass + "'>" + nodeContent + "</li></" + targetNodeName + ">");
         }
     }
     //如果当前选中的元素节点名字是li的话则
-    else{
+    else {
         var nodeContent = currentNode.parent().html();
         //console.log(nodeContent);
         currentNode.parent().replaceWith("<" + targetNodeName + ">" + nodeContent + "</" + targetNodeName + ">");
@@ -199,30 +201,30 @@ var textList = function (whichBtn) {
         targetPart.addClass("textlist");
         editZone.find("#textnoList").hide();
         editZone.find("#textlist").show();
-        changeTagName($("#editZone1").find(".activePart"),"ul");
+        changeTagName($("#editZone1").find(".activePart"), "ul");
     }
     else if (whichBtn.id == "textlist") {
         targetPart.addClass("textnumList").removeClass("textlist");
         editZone.find("#textlist").hide();
         editZone.find("#textnumList").show();
-        changeTagName($("#editZone1").find(".activePart"),"ol");
+        changeTagName($("#editZone1").find(".activePart"), "ol");
     }
     else if (whichBtn.id == "textnumList") {
         targetPart.removeClass("textnumList");
         editZone.find("#textnumList").hide();
         editZone.find("#textnoList").show();
-        if($("#editZone1").find(".activePart")[0].nodeName!=="P"){
-            var act_content=$("#editZone1").find(".activePart").parent()[0].innerText;
-            var length=$("#editZone1").find("ol>li").length;
-            var ol_class=$("#editZone1").find(".activePart")[0].className;
-            for(var i=0,li_content=[],li_class=[];i<length;i++){
-                li_content[i]=$("#editZone1").find("ol>li")[i].innerText;
-                li_class[i]=$("#editZone1").find("ol>li")[i].className;
+        if ($("#editZone1").find(".activePart")[0].nodeName !== "P") {
+            var act_content = $("#editZone1").find(".activePart").parent()[0].innerText;
+            var length = $("#editZone1").find("ol>li").length;
+            var ol_class = $("#editZone1").find(".activePart")[0].className;
+            for (var i = 0, li_content = [], li_class = []; i < length; i++) {
+                li_content[i] = $("#editZone1").find("ol>li")[i].innerText;
+                li_class[i] = $("#editZone1").find("ol>li")[i].className;
                 //$($("#" + editZoneId).find("ol>li")[i]).replaceWith("<p class='"+li_class+"'>"+li_content+"</p>");
             }
             $("#editZone1").find(".activePart").parent().empty();
-            for(var i=0,str='';i<li_content.length;i++){
-                str+="<p class='"+li_class[i]+"'>"+li_content[i]+"</p>";
+            for (var i = 0, str = ''; i < li_content.length; i++) {
+                str += "<p class='" + li_class[i] + "'>" + li_content[i] + "</p>";
             }
             //console.log(str);
             $("#editZone1").find("ol").replaceWith(str);
