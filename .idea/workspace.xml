@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e7f9319e-3d3b-4bf4-b78d-c62620b1b12a" name="Default" comment="" />
+    <list default="true" id="e7f9319e-3d3b-4bf4-b78d-c62620b1b12a" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userPage/js/HEAPOTtextediter.js" afterPath="$PROJECT_DIR$/userPage/js/HEAPOTtextediter.js" />
+    </list>
     <ignored path="tabs.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/editer/activity/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+            <state relative-caret-position="794">
+              <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -33,19 +37,9 @@
       <file leaf-file-name="HEAPOTtextediter.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/userPage/js/HEAPOTtextediter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4050">
-              <caret line="152" column="21" selection-start-line="152" selection-start-column="21" selection-end-line="152" selection-end-column="21" />
-              <folding>
-                <element signature="e#5781#5870#0" expanded="false" />
-                <element signature="e#7471#8352#0" expanded="false" />
-                <element signature="e#8389#9057#0" expanded="false" />
-                <element signature="e#9094#10892#0" expanded="false" />
-                <element signature="e#10933#11654#0" expanded="false" />
-                <element signature="e#11693#12222#0" expanded="false" />
-                <element signature="e#13087#13340#0" expanded="false" />
-                <element signature="e#13389#14641#0" expanded="false" />
-                <element signature="e#14685#14847#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="1632">
+              <caret line="142" column="81" selection-start-line="142" selection-start-column="81" selection-end-line="142" selection-end-column="81" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -53,8 +47,18 @@
       <file leaf-file-name="activity.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/editer/activity/js/activity.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="34" column="34" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
+            <state relative-caret-position="965">
+              <caret line="32" column="46" selection-start-line="32" selection-start-column="46" selection-end-line="32" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="httpd.conf" pinned="false" current-in-tab="true">
+        <entry file="file://D:/wamp/bin/apache/apache2.4.9/conf/original/httpd.conf">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="704">
+              <caret line="240" column="33" selection-start-line="240" selection-start-column="33" selection-end-line="240" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -70,6 +74,9 @@
         <option value="JavaScript File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -118,8 +125,9 @@
         <option value="$USER_HOME$/Desktop/functionModule.js" />
         <option value="$PROJECT_DIR$/userPage/css/functionModule.css" />
         <option value="$PROJECT_DIR$/editer/activity/js/activity.js" />
-        <option value="$PROJECT_DIR$/userPage/js/HEAPOTtextediter.js" />
         <option value="$PROJECT_DIR$/editer/activity/index.html" />
+        <option value="$PROJECT_DIR$/userPage/js/HEAPOTtextediter.js" />
+        <option value="D:/wamp/bin/apache/apache2.4.9/conf/httpd.conf" />
       </list>
     </option>
   </component>
@@ -130,12 +138,12 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="-13" />
+    <option name="y" value="-13" />
+    <option name="width" value="3866" />
+    <option name="height" value="2106" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -203,83 +211,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="userPage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tabs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tabs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="userPage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tabs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tabs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="editer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tabs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tabs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="editer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="activity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tabs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tabs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="editer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="activity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -443,17 +375,18 @@
       <workItem from="1472520755907" duration="7401000" />
       <workItem from="1472532281386" duration="30000" />
       <workItem from="1472532495110" duration="424000" />
+      <workItem from="1472537453071" duration="2301000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="265733000" />
+    <option name="totallyTimeSpent" value="268034000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-13" y="-13" width="3866" height="2106" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17633928" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17619173" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -521,20 +454,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/editer/js/tools/quantize.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/editer/js/tools/ColorAnalysis.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="5" column="36" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/editer/catalog/js/tools/jquery-2.2.1.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -619,27 +538,6 @@
           <folding>
             <element signature="e#12742#15383#0" expanded="false" />
             <element signature="e#17661#19846#0" expanded="false" />
-            <marker date="1460687494000" expanded="true" signature="21802:21820" ph="..." />
-            <marker date="1460687494000" expanded="true" signature="21897:21915" ph="..." />
-            <marker date="1460687494000" expanded="true" signature="22310:22321" ph="..." />
-            <marker date="1460687494000" expanded="true" signature="22392:22410" ph="..." />
-            <marker date="1460687494000" expanded="true" signature="22644:22655" ph="..." />
-            <marker date="1460687494000" expanded="true" signature="23108:23119" ph="..." />
-            <marker date="1460687494000" expanded="true" signature="23649:23660" ph="..." />
-            <marker date="1460687494000" expanded="true" signature="23731:23749" ph="..." />
-            <marker date="1460687494000" expanded="true" signature="23983:23994" ph="..." />
-            <marker date="1460687494000" expanded="true" signature="24503:24514" ph="..." />
-            <marker date="1460687494000" expanded="true" signature="25121:25139" ph="..." />
-            <marker date="1460687494000" expanded="true" signature="25584:25595" ph="..." />
-            <marker date="1460687494000" expanded="true" signature="26374:26385" ph="..." />
-            <marker date="1460687494000" expanded="true" signature="28223:28236" ph="..." />
-            <marker date="1460687494000" expanded="true" signature="29008:29029" ph="..." />
-            <marker date="1460687494000" expanded="true" signature="29187:29205" ph="..." />
-            <marker date="1460687494000" expanded="true" signature="29309:29320" ph="..." />
-            <marker date="1460687494000" expanded="true" signature="29581:29592" ph="..." />
-            <marker date="1460687494000" expanded="true" signature="29840:29851" ph="..." />
-            <marker date="1460687494000" expanded="true" signature="31454:31467" ph="..." />
-            <marker date="1460687494000" expanded="true" signature="31544:31555" ph="..." />
           </folding>
         </state>
       </provider>
@@ -665,14 +563,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="106" selection-end-column="1" />
-          <folding>
-            <marker date="1460534586000" expanded="true" signature="1621:1693" ph="..." />
-            <marker date="1460534586000" expanded="true" signature="1758:1836" ph="..." />
-            <marker date="1460534586000" expanded="true" signature="2641:2654" ph="..." />
-            <marker date="1460534586000" expanded="true" signature="3413:3452" ph="..." />
-            <marker date="1460534586000" expanded="true" signature="3990:4017" ph="..." />
-            <marker date="1460534586000" expanded="true" signature="4064:4106" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -832,36 +723,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/editer/activity/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="794">
+          <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/userPage/js/HEAPOTtextediter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4050">
-          <caret line="152" column="21" selection-start-line="152" selection-start-column="21" selection-end-line="152" selection-end-column="21" />
-          <folding>
-            <element signature="e#5781#5870#0" expanded="false" />
-            <element signature="e#7471#8352#0" expanded="false" />
-            <element signature="e#8389#9057#0" expanded="false" />
-            <element signature="e#9094#10892#0" expanded="false" />
-            <element signature="e#10933#11654#0" expanded="false" />
-            <element signature="e#11693#12222#0" expanded="false" />
-            <element signature="e#13087#13340#0" expanded="false" />
-            <element signature="e#13389#14641#0" expanded="false" />
-            <element signature="e#14685#14847#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="1632">
+          <caret line="142" column="81" selection-start-line="142" selection-start-column="81" selection-end-line="142" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/wamp/bin/apache/apache2.4.9/conf/httpd.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="752">
+          <caret line="229" column="48" selection-start-line="229" selection-start-column="48" selection-end-line="229" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/editer/activity/js/activity.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="34" column="34" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
+        <state relative-caret-position="965">
+          <caret line="32" column="46" selection-start-line="32" selection-start-column="46" selection-end-line="32" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/editer/activity/index.html">
+    <entry file="file://D:/wamp/bin/apache/apache2.4.9/conf/original/httpd.conf">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+        <state relative-caret-position="704">
+          <caret line="240" column="33" selection-start-line="240" selection-start-column="33" selection-end-line="240" selection-end-column="33" />
           <folding />
         </state>
       </provider>

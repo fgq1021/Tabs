@@ -111,7 +111,6 @@ var creTextTool = function (id, editZoneId, top) {
     fillToolBar("../../userPage/css/toolBarImg/text-numList.png", "normal", "有序", "textnumList",textList);
     fillToolBar("../../userPage/css/toolBarImg/text-noindent.png", "normal", "", "textnoindent",textIndent);
     fillToolBar("../../userPage/css/toolBarImg/text-indent.png", "normal", "缩进", "textindent",textIndent);
-    fillToolBar("../../userPage/css/toolBarImg/text-indent.png", "normal", "缩进", "textindent",textIndent);
 
     if (partAttribute.match("textindent") == "textindent") {
         $("#" + editZoneId).parent().find('.toolBar').find('#textindent').show();
