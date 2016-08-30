@@ -12,17 +12,19 @@ var mainBodyEditZone = function (id) {
         verifyTool(activePart, id);
     });
     document.onselectionchange = function () {
-        //console.log(window.getSelection().anchorNode,typeof  window.getSelection().anchorNode);
+        console.log(window.getSelection().anchorNode,typeof  window.getSelection().anchorNode);
         if(window.getSelection().anchorNode!=null){
-            //console.log(window.getSelection().anchorNode.nodeName);
+            console.log(window.getSelection().anchorNode.nodeName);
             if(window.getSelection().anchorNode.nodeName=='#text'){
                 activePart = window.getSelection().anchorNode.parentNode;
                 verifyTool(activePart, id);
             }
+            if (window.getSelection().anchorNode.parentNode == $('#' + id).get(0)) {
+                $("#" + id).find('.activePart').removeClass("activePart");
+                $(activePart).addClass("activePart");
+            }
         }
-        /*activePart = window.getSelection().anchorNode.parentNode;
-        verifyTool(activePart, id);
-        if ((activePart != window.getSelection().anchorNode.parentNode && window.getSelection().anchorNode.parentNode != $('#' + id).get(0)) || activePart.clientHeight != activePartHeight) {
+        /*if ((activePart != window.getSelection().anchorNode.parentNode && window.getSelection().anchorNode.parentNode != $('#' + id).get(0)) || activePart.clientHeight != activePartHeight) {
              activePart = window.getSelection().anchorNode.parentNode;
              verifyTool(activePart, id);
         }
@@ -79,7 +81,6 @@ var mainBodyEditZone = function (id) {
         //console.log(event.keyCode + "keypress");
         $("<p>").html("keypress" + iii()).prependTo("#logBox");
     });
-
 };
 var verifyTool = function (thisPart, editZoneId) {
     if (thisPart.parentElement.id == editZoneId||thisPart.parentElement.parentElement.id == editZoneId) {
@@ -111,8 +112,6 @@ var creTextTool = function (id, editZoneId, top) {
     fillToolBar("../../userPage/css/toolBarImg/text-numList.png", "normal", "有序", "textnumList",textList);
     fillToolBar("../../userPage/css/toolBarImg/text-noindent.png", "normal", "", "textnoindent",textIndent);
     fillToolBar("../../userPage/css/toolBarImg/text-indent.png", "normal", "缩进", "textindent",textIndent);
-    fillToolBar("../../userPage/css/toolBarImg/text-indent.png", "normal", "缩进", "textindent",textIndent);
-
     if (partAttribute.match("textindent") == "textindent") {
         $("#" + editZoneId).parent().find('.toolBar').find('#textindent').show();
     }
@@ -149,10 +148,6 @@ var creTextTool = function (id, editZoneId, top) {
     $("<div class='splitLine'>").appendTo("#" + id);
     var message=$('#editZone1').html();
     window.localStorage.setItem('editZone1',message);
-    /*var edit_content= localStorage['editZone1'];
-    if(edit_content){
-        console.log(edit_content);
-    }*/
 };
 var changeTagName = function (currentNode, targetNodeName) {
     var nodeClass = currentNode.get(0).className;

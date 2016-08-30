@@ -1,7 +1,6 @@
 /**
  * Created by fgq10 on 2016-06-16.
  */
-
 var pageStart = function () {
     topSwitchBox(btnNames, location.href.split("?")[1]);
     newli(1, 123165431, "http://img1.gamersky.com/image2016/07/20160701_djy_248_4/gamersky_01small_02_2016711637A75.jpg", "外媒报道《守望先锋》收录中国见义勇为大学生：缅怀英雄", "作者:Byron", 1);
@@ -25,7 +24,7 @@ var pageStart = function () {
     creTimeModule(times);
     crePopulationModule([20000, 15000, 5000]);
     // console.log($('.head').css("color"));
-    // // console.log(formatColor($('.head').css("color")));
+    // console.log(formatColor($('.head').css("color")));
     // console.log(formatColor("rgba(0, 178, 255, 0.78)"));
     // console.log(formatColor("hsla(198, 100%, 50%, 0.78)"));
     console.log(formatColor("#5F00CC"));
@@ -46,6 +45,4 @@ var titleData = {
     title: "什么样的李杨才是最逗比的李杨，周末揭晓",
     author: "Byron"
 };
-
-
 $(document).ready(pageStart);
