@@ -12,9 +12,9 @@ var mainBodyEditZone = function (id) {
         verifyTool(activePart, id);
     });
     document.onselectionchange = function () {
-        console.log(window.getSelection().anchorNode,typeof  window.getSelection().anchorNode);
+        //console.log(window.getSelection().anchorNode,typeof  window.getSelection().anchorNode);
         if(window.getSelection().anchorNode!=null){
-            console.log(window.getSelection().anchorNode.nodeName);
+            //console.log(window.getSelection().anchorNode.nodeName);
             if(window.getSelection().anchorNode.nodeName=='#text'){
                 activePart = window.getSelection().anchorNode.parentNode;
                 verifyTool(activePart, id);
@@ -79,6 +79,7 @@ var mainBodyEditZone = function (id) {
         //console.log(event.keyCode + "keypress");
         $("<p>").html("keypress" + iii()).prependTo("#logBox");
     });
+
 };
 var verifyTool = function (thisPart, editZoneId) {
     if (thisPart.parentElement.id == editZoneId||thisPart.parentElement.parentElement.id == editZoneId) {
@@ -110,6 +111,8 @@ var creTextTool = function (id, editZoneId, top) {
     fillToolBar("../../userPage/css/toolBarImg/text-numList.png", "normal", "有序", "textnumList",textList);
     fillToolBar("../../userPage/css/toolBarImg/text-noindent.png", "normal", "", "textnoindent",textIndent);
     fillToolBar("../../userPage/css/toolBarImg/text-indent.png", "normal", "缩进", "textindent",textIndent);
+    fillToolBar("../../userPage/css/toolBarImg/text-indent.png", "normal", "缩进", "textindent",textIndent);
+
     if (partAttribute.match("textindent") == "textindent") {
         $("#" + editZoneId).parent().find('.toolBar').find('#textindent').show();
     }
@@ -144,6 +147,12 @@ var creTextTool = function (id, editZoneId, top) {
         $("#" + editZoneId).parent().find('.toolBar').find('#textleft').show();
     }
     $("<div class='splitLine'>").appendTo("#" + id);
+    var message=$('#editZone1').html();
+    window.localStorage.setItem('editZone1',message);
+    /*var edit_content= localStorage['editZone1'];
+    if(edit_content){
+        console.log(edit_content);
+    }*/
 };
 var changeTagName = function (currentNode, targetNodeName) {
     var nodeClass = currentNode.get(0).className;
@@ -164,46 +173,6 @@ var changeTagName = function (currentNode, targetNodeName) {
         //$("#editZone1").find(".activePart").focus();不起作用，获取不到
         //focus函数括号里面不写函数，表示获取焦点；括号里面写函数表示当获取焦点后执行焦点里面的内容
     }
-};
-var creAddBtn = function (id, editZoneId, top) {
-    $("#" + editZoneId).parent().find(".addBtnLine").remove();
-    $("<div class='addBtnLine'>").attr("id", id).css("top", top * 1 + "px").appendTo("." + $("#" + editZoneId).parent().attr('class'));
-    $("<div class='btnZone'>").appendTo("#" + id);
-    $("<div class='addBtn'>").appendTo("#" + id);
-    $("<div class='line'>").appendTo("#" + id);
-    $("<div class='addBar'>").appendTo("#" + id);
-    fillBtnBox("addBar");
-    $('.btnZone').click(function () {
-        console.log(111);
-        var addBtnA = $(this).parent().find(".addBtn");
-        if (addBtnA.attr("class").match("addBtnClose") == "addBtnClose") {
-            $(addBtnA).removeClass("addBtnClose").addClass("addBtnRe");
-            $(addBtnA).parent().removeClass("addActive");
-            $(addBtnA).parent().find(".addBar").removeClass("addBarActive");
-            $(addBtnA).parent().parent().find(".activePart").removeClass("addPartActive");
-        }
-        else {
-            $(addBtnA).removeClass("addBtnRe").addClass("addBtnClose");
-            $(addBtnA).parent().addClass("addActive");
-            $(addBtnA).parent().find(".addBar").addClass("addBarActive");
-            $(addBtnA).parent().parent().find(".activePart").addClass("addPartActive");
-        }
-    });
-};
-var fillToolBar = function (img, width, name, toolId, toolFunction) {
-    $("<button class='tool'>").attr("id", toolId).unbind("click").click(function () {
-        toolFunction(this);
-        //console.log(this);
-        var activePart = $(this).parent().parent().parent().find('.activePart').get(0);//找到选中的段落
-        verifyTool(activePart, $(this).parent().parent().parent().find('.mainBodyEditZone').attr("id"));
-    }).appendTo(".toolBar");
-    if (width == "normal") {
-        $("<div class='toolPic'>").css('background-image', 'url(' + img + ')').appendTo("[Id=" + toolId + "]");
-    }
-    else if (width == "wide") {
-        $("<div class='toolPic'>").css("background-image", "url(" + img + ")").addClass("toolPicWide").appendTo('#' + toolId);
-    }
-    $("<div class='toolName'>").html(name).appendTo('#' + toolId);
 };
 var textSize = function (whichBtn) {
     var editZone = $(whichBtn).parent().parent().parent();
@@ -245,25 +214,19 @@ var textList = function (whichBtn) {
         editZone.find("#textnoList").show();
         if($("#editZone1").find(".activePart")[0].nodeName!=="P"){
             var act_content=$("#editZone1").find(".activePart").parent()[0].innerText;
-            //console.log(act_content);
             var length=$("#editZone1").find("ol>li").length;
-            //console.log(length);
             var ol_class=$("#editZone1").find(".activePart")[0].className;
             for(var i=0,li_content=[],li_class=[];i<length;i++){
                 li_content[i]=$("#editZone1").find("ol>li")[i].innerText;
-                //console.log(li_content[i]);
                 li_class[i]=$("#editZone1").find("ol>li")[i].className;
-                //console.log(li_class[i]);
                 //$($("#" + editZoneId).find("ol>li")[i]).replaceWith("<p class='"+li_class+"'>"+li_content+"</p>");
             }
-            //console.log(li_content,li_content.length);
             $("#editZone1").find(".activePart").parent().empty();
             for(var i=0,str='';i<li_content.length;i++){
                 str+="<p class='"+li_class[i]+"'>"+li_content[i]+"</p>";
             }
             //console.log(str);
             $("#editZone1").find("ol").replaceWith(str);
-            //$("#" + editZoneId).find(".activePart").parent().replaceWith("<p class='"+ol_class+"'>"+act_content+"</p>");
         }
     }
 };
@@ -300,6 +263,21 @@ var textIndent = function (whichBtn) {
         editZone.find("#textnoindent").show();
     }
 };
+var fillToolBar = function (img, width, name, toolId, toolFunction) {
+    $("<button class='tool'>").attr("id", toolId).unbind("click").click(function () {
+        toolFunction(this);
+        //console.log(this);
+        var activePart = $(this).parent().parent().parent().find('.activePart').get(0);//找到选中的段落
+        verifyTool(activePart, $(this).parent().parent().parent().find('.mainBodyEditZone').attr("id"));
+    }).appendTo(".toolBar");
+    if (width == "normal") {
+        $("<div class='toolPic'>").css('background-image', 'url(' + img + ')').appendTo("[Id=" + toolId + "]");
+    }
+    else if (width == "wide") {
+        $("<div class='toolPic'>").css("background-image", "url(" + img + ")").addClass("toolPicWide").appendTo('#' + toolId);
+    }
+    $("<div class='toolName'>").html(name).appendTo('#' + toolId);
+};
 var fillBtnBox = function (addClass) {
     creBtnBox("图片", addClass);
     creBtnBox("报名表单", addClass);
@@ -309,6 +287,31 @@ var fillBtnBox = function (addClass) {
     creBtnBox("投票", addClass);
     creBtnBox("投票", addClass);
     creBtnBox("投票", addClass);
+};
+var creAddBtn = function (id, editZoneId, top) {
+    $("#" + editZoneId).parent().find(".addBtnLine").remove();
+    $("<div class='addBtnLine'>").attr("id", id).css("top", top * 1 + "px").appendTo("." + $("#" + editZoneId).parent().attr('class'));
+    $("<div class='btnZone'>").appendTo("#" + id);
+    $("<div class='addBtn'>").appendTo("#" + id);
+    $("<div class='line'>").appendTo("#" + id);
+    $("<div class='addBar'>").appendTo("#" + id);
+    fillBtnBox("addBar");
+    $('.btnZone').click(function () {
+        console.log(111);
+        var addBtnA = $(this).parent().find(".addBtn");
+        if (addBtnA.attr("class").match("addBtnClose") == "addBtnClose") {
+            $(addBtnA).removeClass("addBtnClose").addClass("addBtnRe");
+            $(addBtnA).parent().removeClass("addActive");
+            $(addBtnA).parent().find(".addBar").removeClass("addBarActive");
+            $(addBtnA).parent().parent().find(".activePart").removeClass("addPartActive");
+        }
+        else {
+            $(addBtnA).removeClass("addBtnRe").addClass("addBtnClose");
+            $(addBtnA).parent().addClass("addActive");
+            $(addBtnA).parent().find(".addBar").addClass("addBarActive");
+            $(addBtnA).parent().parent().find(".activePart").addClass("addPartActive");
+        }
+    });
 };
 var creBtnBox = function (name, addClass) {
     $("<button id='a'>").appendTo("." + addClass);

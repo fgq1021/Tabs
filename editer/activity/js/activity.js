@@ -32,10 +32,12 @@ var pageStart = function () {
     // console.log(getHSLA(198, 80, 50));
     // console.log(getHSLA(198, 80, 50, 0.5));
     mainBodyEditZone("editZone1");
+    if(localStorage['editZone1']){
+        console.log(localStorage['editZone1']);
+        editZone1.innerHTML=localStorage['editZone1'];
+     }
     fillBtnBox("addBarBottom");
 };
-
-
 var btnNames = ["查看", "编辑"];
 // 目前只支持两个按钮
 var titleData = {
