@@ -265,6 +265,22 @@ var textIndent = function (whichBtn) {
         editZone.find("#textnoindent").show();
     }
 };
+var textReplace =function(){
+    //console.log($("#editZone1").find("div.activePart"));
+    if($("#editZone1").find("div.activePart")[0]){
+        //console.log($("#editZone1").find("div.activePart")[0].innerHTML);
+        if($("#editZone1").find("div.activePart")[0].innerHTML=='<br>'){
+            //console.log('div.activePart标签名字可以替换');
+            $("#editZone1").find("div.activePart").replaceWith('<p><br></p>');
+        }
+    }
+    /*if($("#editZone1").find("div")[0]){
+         if($("#editZone1").find("div")[0].innerHTML=='<br>'){
+             console.log('div标签名字可以替换');
+             $("#editZone1").find("div").replaceWith('<p><br></p>');
+         }
+     }*/
+};
 var fillToolBar = function (img, width, name, toolId, toolFunction) {
     $("<button class='tool'>").attr("id", toolId).unbind("click").click(function () {
         toolFunction(this);
@@ -321,19 +337,3 @@ var creBtnBox = function (name, addClass) {
     $("<p></p>").html(name).appendTo("#a");
     $("#a").removeAttr("id");
 };
-var textReplace =function(){
-    //console.log($("#editZone1").find("div.activePart"));
-    if($("#editZone1").find("div.activePart")[0]){
-        //console.log($("#editZone1").find("div.activePart")[0].innerHTML);
-        if($("#editZone1").find("div.activePart")[0].innerHTML=='<br>'){
-            //console.log('div.activePart标签名字可以替换');
-            $("#editZone1").find("div.activePart").replaceWith('<p><br></p>');
-        }
-    }
-    /*if($("#editZone1").find("div")[0]){
-        if($("#editZone1").find("div")[0].innerHTML=='<br>'){
-            console.log('div标签名字可以替换');
-            $("#editZone1").find("div").replaceWith('<p><br></p>')
-        }
-    }*/
-}
