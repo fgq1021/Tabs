@@ -35,6 +35,7 @@ var pageStart = function () {
         console.log(localStorage['editZone1']);
         editZone1.innerHTML=localStorage['editZone1'];
      }
+    textReplace();
     fillBtnBox("addBarBottom");
 };
 var btnNames = ["查看", "编辑"];

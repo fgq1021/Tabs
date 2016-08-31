@@ -197,11 +197,11 @@ body, p, button {
     margin:0;
  }
 /*,.mainBodyEditZone ul li .textlist和.mainBodyEditZone ol li .textnumList没有意义，p没有list-style-type*/
-.mainBodyEditZone>ul>li/*,.mainBodyEditZone ul li.textlist*/{
+.mainBodyEditZone ul>li/*,.mainBodyEditZone ul li.textlist*/{
     list-style-type: circle;
     list-style-position:inside;
 }
-.mainBodyEditZone>ol>li/*,.mainBodyEditZone ol li.textnumList*/{
+.mainBodyEditZone ol>li/*,.mainBodyEditZone ol li.textnumList*/{
     list-style-type: decimal;
     list-style-position:inside;
 }
