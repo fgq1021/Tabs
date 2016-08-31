@@ -169,6 +169,7 @@ var changeTagName = function (currentNode, targetNodeName) {
         var nodeContent = currentNode.parent().html();
         //console.log(nodeContent);
         currentNode.parent().replaceWith("<" + targetNodeName + ">" + nodeContent + "</" + targetNodeName + ">");
+        $("#editZone1").find('.activePart').siblings().addClass("textnumList").removeClass("textlist");
         /*$("#editZone1").parent().find('.focustest').focus();*/
         //focus函数括号里面不写函数，表示获取焦点；括号里面写函数表示当获取焦点后执行焦点里面的内容
     }
@@ -226,6 +227,7 @@ var textList = function (whichBtn) {
             }
             //console.log(str);
             $("#editZone1").find("ol").replaceWith(str);
+            $("#editZone1").find('.activePart').siblings().removeClass("textnumList");;
         }
     }
 };
@@ -324,14 +326,14 @@ var textReplace =function(){
     if($("#editZone1").find("div.activePart")[0]){
         //console.log($("#editZone1").find("div.activePart")[0].innerHTML);
         if($("#editZone1").find("div.activePart")[0].innerHTML=='<br>'){
-            console.log('div.activePart标签名字可以替换');
-            $("#editZone1").find("div.activePart").replaceWith('<p><br></p>')
+            //console.log('div.activePart标签名字可以替换');
+            $("#editZone1").find("div.activePart").replaceWith('<p><br></p>');
         }
     }
-    if($("#editZone1").find("div")[0]){
+    /*if($("#editZone1").find("div")[0]){
         if($("#editZone1").find("div")[0].innerHTML=='<br>'){
             console.log('div标签名字可以替换');
             $("#editZone1").find("div").replaceWith('<p><br></p>')
         }
-    }
+    }*/
 }
