@@ -105,7 +105,7 @@ var creToolBox = function (id, editZoneId, top) {
 var creTextTool = function (id, editZoneId, top) {
     creToolBox(id, editZoneId, top);
     var partAttribute = $("#" + editZoneId).find(".activePart").attr('class');
-    //console.log(partAttribute);
+    //console.log(partAttribute,$("#" + editZoneId).find(".activePart")[0]);
     textReplace();
     fillToolBar("../../userPage/css/toolBarImg/text-sizeBig.png", "normal", "大号", "textBig", textSize);
     fillToolBar("../../userPage/css/toolBarImg/text-sizeLit.png", "normal", "小号", "textLit", textSize);
@@ -174,6 +174,7 @@ var changeTagName = function (currentNode, targetNodeName) {
         //focus函数括号里面不写函数，表示获取焦点；括号里面写函数表示当获取焦点后执行焦点里面的内容
     }
 };
+//文本字体大小控制函数
 var textSize = function (whichBtn) {
     var editZone = $(whichBtn).parent().parent().parent();
     var targetPart = $(whichBtn).parent().parent().parent().find(".activePart");
@@ -181,18 +182,32 @@ var textSize = function (whichBtn) {
         targetPart.addClass("textBig");
         editZone.find("#text").hide();
         editZone.find("#textBig").show();
+        synchronousReplace();
     }
     else if (whichBtn.id == "textBig") {
         targetPart.addClass("textLit").removeClass("textBig");
         editZone.find("#textBig").hide();
         editZone.find("#textLit").show();
+        synchronousReplace();
     }
     else if (whichBtn.id == "textLit") {
         targetPart.removeClass("textLit");
         editZone.find("#textLit").hide();
         editZone.find("#text").show();
+        synchronousReplace();
+    }
+    textReplace();
+};
+//若选中的元素是li则要进行同步替换
+var synchronousReplace=function(){
+    var targetPart=$("#editZone1").find(".activePart");
+    //console.log(targetPart[0],targetPart.attr('class'),targetPart[0].nodeName);
+    if(targetPart[0].nodeName=='LI'&&targetPart.siblings().length>0){
+        /*console.log('可以进行修改');*/
+        targetPart.siblings().attr('class','').addClass(targetPart.attr('class')).removeClass('activePart');
     }
 };
+//文本序列列表
 var textList = function (whichBtn) {
     var editZone = $(whichBtn).parent().parent().parent();//编辑区域
     var targetPart = $(whichBtn).parent().parent().parent().find(".activePart");//编辑区选中的部分
@@ -227,10 +242,11 @@ var textList = function (whichBtn) {
             }
             //console.log(str);
             $("#editZone1").find("ol").replaceWith(str);
-            $("#editZone1").find('.activePart').siblings().removeClass("textnumList");;
+            $("#editZone1").find('.activePart').siblings().removeClass("textnumList");
         }
     }
 };
+//文本居中方式
 var textPosition = function (whichBtn) {
     var editZone = $(whichBtn).parent().parent().parent();//编辑区域
     var targetPart = $(whichBtn).parent().parent().parent().find(".activePart");//编辑区选中的部分
@@ -238,19 +254,23 @@ var textPosition = function (whichBtn) {
         targetPart.addClass("textright");
         editZone.find("#textleft").hide();
         editZone.find("#textright").show();
+        synchronousReplace();
     }
     else if (whichBtn.id == "textright") {
         targetPart.addClass("textcenter").removeClass("textright");
         editZone.find("#textright").hide();
         editZone.find("#textcenter").show();
+        synchronousReplace();
     }
     else if (whichBtn.id == "textcenter") {
         targetPart.removeClass("textcenter");
         editZone.find("#textcenter").hide();
         editZone.find("#textleft").show();
+        synchronousReplace();
     }
 
 };
+//文本首行缩进
 var textIndent = function (whichBtn) {
     var editZone = $(whichBtn).parent().parent().parent();//编辑区域
     var targetPart = $(whichBtn).parent().parent().parent().find(".activePart");//编辑区选中的部分
@@ -258,28 +278,30 @@ var textIndent = function (whichBtn) {
         targetPart.addClass("textindent");
         editZone.find("#textnoindent").hide();
         editZone.find("#textindent").show();
+        synchronousReplace();
     }
     else if (whichBtn.id == "textindent") {
         targetPart.removeClass("textindent");
         editZone.find("#textindnet").hide();
         editZone.find("#textnoindent").show();
+        synchronousReplace();
     }
 };
+//若文本编辑中选中的元素是div的话，进行文本标签的替换
 var textReplace =function(){
     //console.log($("#editZone1").find("div.activePart"));
-    if($("#editZone1").find("div.activePart")[0]){
-        //console.log($("#editZone1").find("div.activePart")[0].innerHTML);
+    if($("#editZone1").find("div")[0]){
+        console.log('div标签名字可以替换');
+        /*var content=$("#editZone1").find("div").html();*/
+        $("#editZone1").find("div").replaceWith('<p><br></p>');
+    }
+    else if($("#editZone1").find("div.activePart")[0]){
+        console.log($("#editZone1").find("div.activePart")[0]);
         if($("#editZone1").find("div.activePart")[0].innerHTML=='<br>'){
-            //console.log('div.activePart标签名字可以替换');
+            console.log('div.activePart标签名字可以替换');
             $("#editZone1").find("div.activePart").replaceWith('<p><br></p>');
         }
     }
-    /*if($("#editZone1").find("div")[0]){
-         if($("#editZone1").find("div")[0].innerHTML=='<br>'){
-             console.log('div标签名字可以替换');
-             $("#editZone1").find("div").replaceWith('<p><br></p>');
-         }
-     }*/
 };
 var fillToolBar = function (img, width, name, toolId, toolFunction) {
     $("<button class='tool'>").attr("id", toolId).unbind("click").click(function () {
