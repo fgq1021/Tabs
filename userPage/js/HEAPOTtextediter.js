@@ -9,6 +9,7 @@ var mainBodyEditZone = function (id) {
     $('#' + id).click(function (e) {
         activePart = event.srcElement;//获取事件的目标元素
         //console.log(e.target);
+        // IE下,event对象有srcElement属性,但是没有target属性;Firefox下,event对象有target属性,但是没有srcElement属性.但他们的作用是相当的
         verifyTool(activePart, id);
     });
     document.onselectionchange = function () {
@@ -182,28 +183,109 @@ var textSize = function (whichBtn) {
         targetPart.addClass("textBig");
         editZone.find("#text").hide();
         editZone.find("#textBig").show();
-        synchronousReplace();
+        noCoexist();
     }
     else if (whichBtn.id == "textBig") {
         targetPart.addClass("textLit").removeClass("textBig");
         editZone.find("#textBig").hide();
         editZone.find("#textLit").show();
-        synchronousReplace();
     }
     else if (whichBtn.id == "textLit") {
         targetPart.removeClass("textLit");
         editZone.find("#textLit").hide();
         editZone.find("#text").show();
-        synchronousReplace();
     }
-    textReplace();
+};
+//若当前元素是li的话，若点击字体大小控制按钮时候，会变成段落模式(文本class与序列class不共存)
+var noCoexist=function(){
+    var targetPart=$("#editZone1").find('.activePart');
+    var targetPart_class=$("#editZone1").find('.activePart').attr('class');
+    var targetPart_content=$("#editZone1").find('.activePart').html();
+    //如果序列内容只有一项
+    if(targetPart[0].nodeName == 'LI'&&targetPart.siblings().length == 0){
+        var li_content=targetPart.html();
+        var li_class=targetPart[0].className;
+        targetPart.parent().replaceWith('<p class="'+li_class+'">'+li_content+'</p>');
+        if(targetPart.parent()[0].nodeName == 'UL'){
+            $("#editZone1").find('.activePart').removeClass('textlist');
+        }
+        else{
+            $("#editZone1").find('.activePart').removeClass('textnumList');
+        }
+    }
+    //如果序列内容不只有一项
+    else if(targetPart[0].nodeName == 'LI'&&targetPart.siblings().length > 0){
+        var li_length=targetPart.parent().find('li').length;
+        var act_index=targetPart.parent().find('li').index(targetPart);//输出的是选中元素在li中的下标
+        // 如果是第一个元素，则要替换的文本换成p元素，其他内容仍然是序列标签
+        if(act_index == 0){
+            targetPart.parent().before('<p class="'+targetPart_class+'">'+targetPart_content+'</p>');
+            for(var i=1,previous_str='';i<li_length;i++){
+                var previous_content = targetPart.parent().find('li')[i].innerText;
+                var previous_class = targetPart.parent().find('li')[i].className;
+                previous_str += "<li class='"+previous_class+"'>"+previous_content+"</li>";
+            }
+            if(targetPart.parent()[0].nodeName == 'OL'){
+                $("#editZone1").find('.activePart').removeClass('textnumList');
+                $("#editZone1").find('.activePart+ol').replaceWith('<ol>'+previous_str+'</ol>');
+            }
+            else if(targetPart.parent()[0].nodeName == 'UL'){
+                $("#editZone1").find('.activePart').removeClass('textlist');
+                $("#editZone1").find('.activePart+ul').replaceWith('<ul>'+previous_str+'</ul>');
+            }
+        }
+        //如果是最后一个元素，则要替换的文本换成p元素，其他内容仍然是序列标签
+        else if(li_length == (act_index+1)){
+            targetPart.parent().after('<p class="'+targetPart_class+'">'+targetPart_content+'</p>');
+            targetPart.remove();
+            var act_nodeName=$("#editZone1").find('.activePart').prev()[0].nodeName;
+            if(act_nodeName=='OL'){
+                $("#editZone1").find('.activePart').removeClass('textnumList');
+            }
+            else if(act_nodeName=='UL'){
+                $("#editZone1").find('.activePart').removeClass('textlist');
+            }
+            /*for(var i=0,finally_str='';i<li_length-1;i++){
+                var finally_content = targetPart.parent().find('li')[i].innerText;
+                var finally_class = targetPart.parent().find('li')[i].className;
+                finally_str += "<li class='"+finally_class+"'>"+finally_content+"</li>>";
+            }
+            console.log(finally_str);*/
+        }
+        //否则选中文本不是序列的边缘，替换文本换成p标签，其余内容会生成2个序列
+        else{
+            for(var i=0,middle_str='';i<act_index;i++){
+                var middle_content = targetPart.parent().find('li')[i].innerText;
+                var middle_class = targetPart.parent().find('li')[i].className;
+                middle_str += "<li class='"+middle_class+"'>"+middle_content+"</li>";
+            }
+             for(var i=act_index+1,center_str='';i<li_length;i++){
+                var center_content = targetPart.parent().find('li')[i].innerText;
+                var center_class = targetPart.parent().find('li')[i].className;
+                center_str += "<li class='"+center_class+"'>"+center_content+"</li>";
+            }
+            if(targetPart.parent()[0].nodeName == 'OL'){
+                targetPart.parent().before('<ol>'+middle_str+'</ol>');
+                targetPart.parent().after('<ol>'+center_str+'</ol>');
+                targetPart.parent().after('<p class="'+targetPart_class+'">'+targetPart_content+'</p>');
+                targetPart.parent().next().removeClass('textnumList');
+                targetPart.parent().remove();
+            }
+            else if(targetPart.parent()[0].nodeName == 'UL'){
+                targetPart.parent().before('<ul>'+middle_str+'</ul>');
+                targetPart.parent().after('<ul>'+center_str+'</ul>');
+                targetPart.parent().after('<p class="'+targetPart_class+'">'+targetPart_content+'</p>');
+                targetPart.parent().next().removeClass('textlist');
+                targetPart.parent().remove();
+            }
+        }
+    }
 };
 //若选中的元素是li则要进行同步替换
 var synchronousReplace=function(){
     var targetPart=$("#editZone1").find(".activePart");
     //console.log(targetPart[0],targetPart.attr('class'),targetPart[0].nodeName);
     if(targetPart[0].nodeName=='LI'&&targetPart.siblings().length>0){
-        /*console.log('可以进行修改');*/
         targetPart.siblings().attr('class','').addClass(targetPart.attr('class')).removeClass('activePart');
     }
 };
@@ -216,6 +298,7 @@ var textList = function (whichBtn) {
         editZone.find("#textnoList").hide();
         editZone.find("#textlist").show();
         changeTagName($("#editZone1").find(".activePart"), "ul");
+        deleteClass();
     }
     else if (whichBtn.id == "textlist") {
         targetPart.addClass("textnumList").removeClass("textlist");
@@ -227,23 +310,33 @@ var textList = function (whichBtn) {
         targetPart.removeClass("textnumList");
         editZone.find("#textnumList").hide();
         editZone.find("#textnoList").show();
-        if ($("#editZone1").find(".activePart")[0].nodeName == "LI") {
-            var act_content = $("#editZone1").find(".activePart").parent()[0].innerText;
-            var length = $("#editZone1").find("ol>li").length;
+        if (targetPart[0].nodeName == "LI") {
+            var act_content = targetPart.parent()[0].innerText;
+            var length = targetPart.parent().find('li').length;
             var ol_class = $("#editZone1").find(".activePart")[0].className;
             for (var i = 0, li_content = [], li_class = []; i < length; i++) {
-                li_content[i] = $("#editZone1").find("ol>li")[i].innerText;
-                li_class[i] = $("#editZone1").find("ol>li")[i].className;
-                //$($("#" + editZoneId).find("ol>li")[i]).replaceWith("<p class='"+li_class+"'>"+li_content+"</p>");
+                li_content[i] = targetPart.parent().find('li')[i].innerText;
+                li_class[i] = targetPart.parent().find('li')[i].className;
+                //$(targetPart.parent().find('li')[i]).replaceWith("<p class='"+li_class[i]+"'>"+li_content[i]+"</p>");
             }
             $("#editZone1").find(".activePart").parent().empty();
             for (var i = 0, str = ''; i < li_content.length; i++) {
                 str += "<p class='" + li_class[i] + "'>" + li_content[i] + "</p>";
             }
-            //console.log(str);
-            $("#editZone1").find("ol").replaceWith(str);
+            $("#editZone1").find("ol:empty").replaceWith(str);
             $("#editZone1").find('.activePart').siblings().removeClass("textnumList");
         }
+    }
+};
+//当由标题模式切换到序列列表模式时，将带有标题模式的class属性去掉
+var deleteClass=function(){
+    var targetPart=$("#editZone1").find(".activePart");
+    var partAttribute=targetPart.attr('class');
+    if(partAttribute.match("textBig") == "textBig"){
+        targetPart.removeClass('textBig');
+    }
+    else if(partAttribute.match("textLit") == "textLit"){
+        targetPart.removeClass('textLit');
     }
 };
 //文本居中方式
@@ -254,21 +347,17 @@ var textPosition = function (whichBtn) {
         targetPart.addClass("textright");
         editZone.find("#textleft").hide();
         editZone.find("#textright").show();
-        synchronousReplace();
     }
     else if (whichBtn.id == "textright") {
         targetPart.addClass("textcenter").removeClass("textright");
         editZone.find("#textright").hide();
         editZone.find("#textcenter").show();
-        synchronousReplace();
     }
     else if (whichBtn.id == "textcenter") {
         targetPart.removeClass("textcenter");
         editZone.find("#textcenter").hide();
         editZone.find("#textleft").show();
-        synchronousReplace();
     }
-
 };
 //文本首行缩进
 var textIndent = function (whichBtn) {
@@ -278,21 +367,17 @@ var textIndent = function (whichBtn) {
         targetPart.addClass("textindent");
         editZone.find("#textnoindent").hide();
         editZone.find("#textindent").show();
-        synchronousReplace();
     }
     else if (whichBtn.id == "textindent") {
         targetPart.removeClass("textindent");
         editZone.find("#textindnet").hide();
         editZone.find("#textnoindent").show();
-        synchronousReplace();
     }
 };
-//若文本编辑中选中的元素是div的话，进行文本标签的替换
+//有序列表之后回车产生的div用p替换
 var textReplace =function(){
-    //console.log($("#editZone1").find("div.activePart"));
     if($("#editZone1").find("div")[0]){
         console.log('div标签名字可以替换');
-        /*var content=$("#editZone1").find("div").html();*/
         $("#editZone1").find("div").replaceWith('<p><br></p>');
     }
     else if($("#editZone1").find("div.activePart")[0]){
