@@ -228,24 +228,32 @@ body, p, button {
     color: #3e3e3e;
     font-weight: bolder;
 }
-.mainBodyEditZone .textBig.textindent{
-    text-indent: 48px;
-    font-weight: bolder;
-}
 .mainBodyEditZone .textLit {
     padding-top: 13px;
     padding-bottom: 0;
-    font-size: 13px;
+    font-size: 18px;
     color: #999999;
     font-weight: normal;
 }
+/*.mainBodyEditZone .textBig.textindent{
+    !*text-indent: 48px;*!
+    margin-left:48px;
+    font-weight: bolder;
+}
 .mainBodyEditZone .textLit.textindent{
-    text-indent: 48px;
+    !*text-indent: 48px;*!
+    margin-left:26px;
+    font-weight: normal;
+}*/
+.mainBodyEditZone .textindent{
+    /*text-indent: 32px;*/
+    margin-left: 16px;
     font-weight: normal;
 }
-.mainBodyEditZone .textindent{
-    text-indent: 32px;
-    font-weight: normal;
+.mainBodyEditZone .textbigindent{
+    margin-left: 32px;
+    font-weight: bolder;
+    font-size:24px;
 }
 .mainBodyEditZone .textcenter{
     text-align:center;

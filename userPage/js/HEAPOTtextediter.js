@@ -109,7 +109,7 @@ var creTextTool = function (id, editZoneId, top) {
     //console.log(partAttribute,$("#" + editZoneId).find(".activePart")[0]);
     textReplace();
     fillToolBar("../../userPage/css/toolBarImg/text-sizeBig.png", "normal", "大号", "textBig", textSize);
-    fillToolBar("../../userPage/css/toolBarImg/text-sizeLit.png", "normal", "小号", "textLit", textSize);
+    fillToolBar("../../userPage/css/toolBarImg/text-sizeLit.png", "normal", "中号", "textLit", textSize);
     fillToolBar("../../userPage/css/toolBarImg/text-size.png", "normal", "", "text", textSize);
     fillToolBar("../../userPage/css/toolBarImg/text-left.png", "normal", "", "textleft", textPosition);
     fillToolBar("../../userPage/css/toolBarImg/text-center.png", "normal", "居中", "textcenter", textPosition);
@@ -118,11 +118,15 @@ var creTextTool = function (id, editZoneId, top) {
     fillToolBar("../../userPage/css/toolBarImg/text-list.png", "normal", "无序", "textlist", textList);
     fillToolBar("../../userPage/css/toolBarImg/text-numList.png", "normal", "有序", "textnumList", textList);
     fillToolBar("../../userPage/css/toolBarImg/text-noindent.png", "normal", "", "textnoindent", textIndent);
-    fillToolBar("../../userPage/css/toolBarImg/text-indent.png", "normal", "缩进", "textindent", textIndent);
+    fillToolBar("../../userPage/css/toolBarImg/text-indent.png", "normal", "引用", "textindent", textIndent);
+    fillToolBar("../../userPage/css/toolBarImg/text-bigindent.png", "normal", "缩进", "textbigindent", textIndent);
     if (partAttribute.match("textindent") == "textindent") {
         $("#" + editZoneId).parent().find('.toolBar').find('#textindent').show();
     }
-    else {
+    else  if(partAttribute.match("textbigindent") == "textbigindent"){
+        $("#" + editZoneId).parent().find('.toolBar').find('#textbigindent').show();
+    }
+    else{
         $("#" + editZoneId).parent().find('.toolBar').find('#textnoindent').show();
     }
     if (partAttribute.match("textBig") == "textBig") {
@@ -184,16 +188,19 @@ var textSize = function (whichBtn) {
         editZone.find("#text").hide();
         editZone.find("#textBig").show();
         noCoexist();
+        undockClass();
     }
     else if (whichBtn.id == "textBig") {
         targetPart.addClass("textLit").removeClass("textBig");
         editZone.find("#textBig").hide();
         editZone.find("#textLit").show();
+        undockClass();
     }
     else if (whichBtn.id == "textLit") {
         targetPart.removeClass("textLit");
         editZone.find("#textLit").hide();
         editZone.find("#text").show();
+        undockClass();
     }
 };
 //若当前元素是li的话，若点击字体大小控制按钮时候，会变成段落模式(文本class与序列class不共存)
@@ -206,6 +213,7 @@ var noCoexist=function(){
         var li_content=targetPart.html();
         var li_class=targetPart[0].className;
         targetPart.parent().replaceWith('<p class="'+li_class+'">'+li_content+'</p>');
+        //console.log(targetPart.parent()[0].nodeName,$("#editZone1").find('.activePart'));
         if(targetPart.parent()[0].nodeName == 'UL'){
             $("#editZone1").find('.activePart').removeClass('textlist');
         }
@@ -329,11 +337,74 @@ var textList = function (whichBtn) {
         }
     }
 };
-//当由标题模式切换到序列列表模式时，将带有标题模式的class属性去掉
+//进入序列列表模式时，将其他class属性去掉
 var deleteClass=function(){
     var targetPart=$("#editZone1").find(".activePart");
     var partAttribute=targetPart.attr('class');
     if(partAttribute.match("textBig") == "textBig"){
+        targetPart.removeClass('textBig');
+    }
+    else if(partAttribute.match("textLit") == "textLit"){
+        targetPart.removeClass('textLit');
+    }
+    else if(partAttribute.match("textindent") == "textindent"){
+        targetPart.removeClass('textindent');
+    }
+    else if(partAttribute.match("textbigindent") == "textbigindent"){
+        targetPart.removeClass('textbigindent');
+    }
+    else if(partAttribute.match("textright") == "textright"){
+        targetPart.removeClass('textright');
+    }
+    else if(partAttribute.match("textcenter") == "textcenter"){
+        targetPart.removeClass('textcenter');
+    }
+};
+//切换到引用模式时，将其他class属性去掉
+var removeClass=function(){
+    var targetPart=$("#editZone1").find(".activePart");
+    var partAttribute=targetPart.attr('class');
+    if(partAttribute.match("textBig") == "textBig"){
+        targetPart.removeClass('textBig');
+    }
+    else if(partAttribute.match("textLit") == "textLit"){
+        targetPart.removeClass('textLit');
+    }
+    else if(partAttribute.match("textright") == "textright"){
+        targetPart.removeClass('textright');
+    }
+    else if(partAttribute.match("textcenter") == "textcenter"){
+        targetPart.removeClass('textcenter');
+    }
+};
+//切换到标题模式时，将其他class属性去掉
+var undockClass=function(){
+    var targetPart=$("#editZone1").find(".activePart");
+    var partAttribute=targetPart.attr('class');
+    if(partAttribute.match("textindent") == "textindent"){
+        targetPart.removeClass('textindent');
+    }
+    else if(partAttribute.match("textbigindent") == "textbigindent"){
+        targetPart.removeClass('textbigindent');
+    }
+    else if(partAttribute.match("textright") == "textright"){
+        targetPart.removeClass('textright');
+    }
+    else if(partAttribute.match("textcenter") == "textcenter"){
+        targetPart.removeClass('textcenter');
+    }
+};
+//切换到文本位置模式，将其他模式的class属性去掉
+var discardClass=function(){
+    var targetPart=$("#editZone1").find(".activePart");
+    var partAttribute=targetPart.attr('class');
+    if(partAttribute.match("textindent") == "textindent"){
+        targetPart.removeClass('textindent');
+    }
+    else if(partAttribute.match("textbigindent") == "textbigindent"){
+        targetPart.removeClass('textbigindent');
+    }
+    else if(partAttribute.match("textBig") == "textBig"){
         targetPart.removeClass('textBig');
     }
     else if(partAttribute.match("textLit") == "textLit"){
@@ -348,6 +419,8 @@ var textPosition = function (whichBtn) {
         targetPart.addClass("textright");
         editZone.find("#textleft").hide();
         editZone.find("#textright").show();
+        noCoexist();
+        discardClass();
     }
     else if (whichBtn.id == "textright") {
         targetPart.addClass("textcenter").removeClass("textright");
@@ -368,11 +441,20 @@ var textIndent = function (whichBtn) {
         targetPart.addClass("textindent");
         editZone.find("#textnoindent").hide();
         editZone.find("#textindent").show();
+        noCoexist();
+        removeClass();
     }
-    else if (whichBtn.id == "textindent") {
-        targetPart.removeClass("textindent");
-        editZone.find("#textindnet").hide();
+    else if(whichBtn.id == "textindent"){
+        targetPart.addClass("textbigindent").removeClass("textindent");
+        editZone.find("#textindent").hide();
+        editZone.find("#textbigindent").show();
+        removeClass();
+    }
+    else if (whichBtn.id == "textbigindent") {
+        targetPart.removeClass("textbigindent");
+        editZone.find("#textbigindent").hide();
         editZone.find("#textnoindent").show();
+        removeClass();
     }
 };
 //有序列表之后回车产生的div用p替换
