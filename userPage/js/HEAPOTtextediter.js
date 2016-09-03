@@ -305,6 +305,7 @@ var textList = function (whichBtn) {
         editZone.find("#textlist").hide();
         editZone.find("#textnumList").show();
         changeTagName($("#editZone1").find(".activePart"), "ol");
+        deleteClass();
     }
     else if (whichBtn.id == "textnumList") {
         targetPart.removeClass("textnumList");
