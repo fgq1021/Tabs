@@ -188,12 +188,12 @@ body, p, button {
 /*序列号样式控制*/
 .mainBodyEditZone ul,.mainBodyEditZone ol{
     list-style:none;
-    padding:13px 0;
+    padding:0;
     margin:0;
 }
 .mainBodyEditZone li{
     list-style:none;
-    padding:0;
+    padding:13px 0;
     margin:0;
  }
 /*,.mainBodyEditZone ul li .textlist和.mainBodyEditZone ol li .textnumList没有意义，p没有list-style-type*/

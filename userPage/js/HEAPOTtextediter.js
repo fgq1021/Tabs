@@ -27,6 +27,8 @@ var mainBodyEditZone = function (id) {
                 $("#" + id).find('.activePart').removeClass("activePart");
                 $(activePart).addClass("activePart");
             }
+            var message = $('#editZone1').html();
+            window.localStorage.setItem('editZone1', message);
         }
         /*if ((activePart != window.getSelection().anchorNode.parentNode && window.getSelection().anchorNode.parentNode != $('#' + id).get(0)) || activePart.clientHeight != activePartHeight) {
          activePart = window.getSelection().anchorNode.parentNode;
@@ -46,7 +48,7 @@ var mainBodyEditZone = function (id) {
     }
 
     $(window).scroll(function () {
-        console.log($(document).scrollTop(), $('.toolBoxInline').get(0).offsetTop);
+        console.log($(document).scrollTop(), $('.toolBoxInline').get(0).offsetTop,$('#' + id).get(0).offsetTop);
         if ($('#' + id).get(0).offsetTop <= $(document).scrollTop() + 13) {
             $('.toolBoxFixed').show();
             $('.toolBoxInline').hide();
@@ -157,8 +159,8 @@ var creTextTool = function (id, editZoneId, top) {
         $("#" + editZoneId).parent().find('.toolBar').find('#textleft').show();
     }
     $("<div class='splitLine'>").appendTo("#" + id);
-    var message = $('#editZone1').html();
-    window.localStorage.setItem('editZone1', message);
+    /*var message = $('#editZone1').html();
+    window.localStorage.setItem('editZone1', message);*/
 };
 var changeTagName = function (currentNode, targetNodeName) {
     var nodeClass = currentNode.get(0).className;
@@ -307,6 +309,8 @@ var textList = function (whichBtn) {
         editZone.find("#textlist").show();
         changeTagName($("#editZone1").find(".activePart"), "ul");
         deleteClass();
+        //情况是该选中的元素已经是个序列
+        combineContent('UL');
     }
     else if (whichBtn.id == "textlist") {
         targetPart.addClass("textnumList").removeClass("textlist");
@@ -314,6 +318,7 @@ var textList = function (whichBtn) {
         editZone.find("#textnumList").show();
         changeTagName($("#editZone1").find(".activePart"), "ol");
         deleteClass();
+        combineContent('OL');
     }
     else if (whichBtn.id == "textnumList") {
         targetPart.removeClass("textnumList");
@@ -334,6 +339,51 @@ var textList = function (whichBtn) {
             }
             $("#editZone1").find("ol:empty").replaceWith(str);
             $("#editZone1").find('.activePart').siblings().removeClass("textnumList");
+        }
+    }
+};
+//合并列表文本
+var combineContent=function(targetName){
+    //若该选中元素只有上一个兄弟元素为序列模式
+    var active=$("#editZone1").find(".activePart");
+    var active_content=active.parent().html();
+    /*console.log(active_content,active.parent().prev()[0]);*/
+    //如果前面没有元素，后面有元素
+    if(active.parent().prev()[0] == undefined&&active.parent().next()[0]!=undefined){
+        if(active.parent().next()[0].nodeName==targetName){
+            active.parent().next().prepend(active_content);
+            /*console.log('与下面的列表合并',active[0]);*/
+            active.parent().remove();
+        }
+    }
+    //如果后面没有元素，前面有元素
+    else if(active.parent().next()[0] == undefined&&active.parent().prev()[0] != undefined){
+        if(active.parent().prev()[0].nodeName==targetName){
+            active.parent().prev().append(active_content);
+            /*console.log('与上面的列表合并',active[0]);*/
+            active.parent().remove();
+        }
+    }
+    //如果前面后面都有内容：两种情况：一种两个列表合并；另一种三个列表合并
+    else if(active.parent().prev()[0] != undefined&&active.parent().next()[0] != undefined){
+        //若选中的元素可合并1个，另种情况：和上面合并 和下面合并
+        if(active.parent().prev()[0].nodeName==targetName&&active.parent().next()[0].nodeName!=targetName){
+            active.parent().prev().append(active_content);
+            console.log('与上面的列表合并',active[0]);
+            active.parent().remove();
+        }
+        else if(active.parent().prev()[0].nodeName!=targetName&&active.parent().next()[0].nodeName==targetName){
+            active.parent().next().prepend(active_content);
+            /*console.log('与下面的列表合并',active[0]);*/
+            active.parent().remove();
+        }
+        //若该选中元素负级的上一个兄弟元素以及下一个兄弟元素都是序列，三个序列都能合并
+        else if(active.parent().prev()[0].nodeName==targetName&&active.parent().next()[0].nodeName==targetName){
+            /*console.log('与上面下面列表均合并');*/
+            active.parent().prev().append(active_content);
+            active.parent().prev().append(active.parent().next().html());
+            active.parent().next().remove();
+            $("#editZone1").find(".activePart").parent().next().remove();
         }
     }
 };
