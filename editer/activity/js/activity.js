@@ -45,4 +45,15 @@ var titleData = {
     title: "什么样的李杨才是最逗比的李杨，周末揭晓",
     author: "Byron"
 };
+/*var json='[{"class":"textBig"},{"class":"textLit"}]';
+ var result=eval(json);
+ console.log(result);*/
+/*var json='{"textSize1":"addClass=textBig","textSize2":"addClass=textLit"}';
+var result=JSON.parse(json);
+var control=location.href.split("?")[1];
+console.log(result,control);
+if(result.textSize1 == control){
+    var targetPart=$("#editZone1").find('.activePart');
+    targetPart.addClass("textBig");
+}*/
 $(document).ready(pageStart);

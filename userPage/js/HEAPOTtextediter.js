@@ -67,12 +67,13 @@ var mainBodyEditZone = function (id) {
                 event.keyCode = 0;
                 event.returnValue = false;
             }
-            //console.log("第一段已经删除");
+            console.log("第一段已经删除");
         }
         else if ($(this).children().eq(0).html() == "<br>" && $(this).children().eq(0).get(0).tagName == "DIV") {
             if ((event.keyCode == 8)) {
                 event.keyCode = 0;
                 event.returnValue = false;
+                console.log("替换元素");
                 $(this).children().eq(0).replaceWith("<p><br></p>");
                 $('.focustest').focus();
                 $(this).focus();
@@ -159,8 +160,6 @@ var creTextTool = function (id, editZoneId, top) {
         $("#" + editZoneId).parent().find('.toolBar').find('#textleft').show();
     }
     $("<div class='splitLine'>").appendTo("#" + id);
-    /*var message = $('#editZone1').html();
-    window.localStorage.setItem('editZone1', message);*/
 };
 var changeTagName = function (currentNode, targetNodeName) {
     var nodeClass = currentNode.get(0).className;
@@ -509,11 +508,11 @@ var textIndent = function (whichBtn) {
 };
 //有序列表之后回车产生的div用p替换
 var textReplace =function(){
-    if($("#editZone1").find("div")[0]){
+    /*if($("#editZone1").find("div")[0]){
         console.log('div标签名字可以替换');
         $("#editZone1").find("div").replaceWith('<p><br></p>');
     }
-    else if($("#editZone1").find("div.activePart")[0]){
+    else */if($("#editZone1").find("div.activePart")[0]){
         console.log($("#editZone1").find("div.activePart")[0]);
         if($("#editZone1").find("div.activePart")[0].innerHTML=='<br>'){
             console.log('div.activePart标签名字可以替换');
